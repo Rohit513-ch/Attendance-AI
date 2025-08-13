@@ -1,3 +1,202 @@
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Check, Zap, Gauge, Users, Bot, Camera, BarChart } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+
 export default function Home() {
-  return <></>;
+  const features = [
+    {
+      icon: <Zap className="h-8 w-8 text-primary" />,
+      title: 'Automation',
+      description: 'Fully automates the attendance process, saving time and reducing manual errors.',
+    },
+    {
+      icon: <Check className="h-8 w-8 text-primary" />,
+      title: 'Accuracy',
+      description: 'Leverages advanced AI for highly accurate facial recognition, ensuring reliable data.',
+    },
+    {
+      icon: <Gauge className="h-8 w-8 text-primary" />,
+      title: 'Speed',
+      description: 'Verifies attendance in real-time, providing instant records and analytics.',
+    },
+    {
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: 'Scalability',
+      description: 'Easily scales from a single classroom to an entire campus without performance loss.',
+    },
+  ];
+
+  const outcomes = [
+    'Reduced administrative overhead.',
+    'Improved accuracy in attendance records.',
+    'Real-time insights into student presence.',
+    'Enhanced campus security and monitoring.',
+    'Streamlined process for teachers and staff.',
+  ];
+
+  const teamMembers = [
+    { name: 'Team Member 1', role: 'Project Lead', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+    { name: 'Team Member 2', role: 'Frontend Developer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+    { name: 'Team Member 3', role: 'AI/ML Engineer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+    { name: 'Team Member 4', role: 'Backend Developer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+    { name: 'Supervisor', role: 'Project Supervisor', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+    { name: 'Class Teacher', role: 'Class Teacher', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
+  ];
+
+  return (
+    <div className="flex min-h-screen flex-col">
+      <Header />
+      <main className="flex-1">
+        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-card">
+          <div className="container mx-auto px-4 md:px-6 text-center">
+            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+              Automated Attendance, <span className="text-primary">Intelligently Done.</span>
+            </h1>
+            <p className="mx-auto mt-6 max-w-[700px] text-lg text-muted-foreground md:text-xl">
+              AttendAI revolutionizes attendance monitoring with cutting-edge AI. Seamless, accurate, and effortless for modern educational institutions.
+            </p>
+            <div className="mt-8 flex justify-center gap-4">
+              <Button asChild size="lg">
+                <Link href="/demo">View Demo</Link>
+              </Button>
+              <Button asChild variant="outline" size="lg">
+                <Link href="#features">Explore Features</Link>
+              </Button>
+            </div>
+          </div>
+          <div
+            className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
+        </section>
+
+        <section id="about" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="grid gap-10 md:grid-cols-2 lg:gap-16 items-center">
+              <div>
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">About the Project</h2>
+                <p className="mt-4 text-muted-foreground">
+                  Traditional attendance systems are time-consuming and prone to errors. AttendAI addresses this by providing a fully automated solution that uses facial recognition to verify student attendance. Our system is designed to be non-intrusive, highly accurate, and provide valuable data to educators and administrators, solving the critical problem of inefficient and unreliable attendance tracking.
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <Image src="https://placehold.co/550x310.png" alt="AI Face Recognition Graphic" data-ai-hint="facial recognition" width={550} height={310} className="rounded-lg shadow-xl" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="methodology" className="w-full py-12 md:py-24 lg:py-32 bg-card">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Methodology</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Our system follows a simple yet powerful three-step process to ensure seamless attendance verification.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl items-start gap-8 py-12 sm:grid-cols-3 md:gap-12">
+              <div className="grid gap-1 text-center">
+                <div className="flex justify-center items-center mb-4">
+                  <div className="p-4 bg-primary/10 rounded-full"><Camera className="h-10 w-10 text-primary" /></div>
+                </div>
+                <h3 className="text-lg font-bold font-headline">1. Capture</h3>
+                <p className="text-sm text-muted-foreground">The system captures images from connected cameras in classrooms.</p>
+              </div>
+              <div className="grid gap-1 text-center">
+                <div className="flex justify-center items-center mb-4">
+                  <div className="p-4 bg-primary/10 rounded-full"><Bot className="h-10 w-10 text-primary" /></div>
+                </div>
+                <h3 className="text-lg font-bold font-headline">2. Verify</h3>
+                <p className="text-sm text-muted-foreground">Our AI model processes the images, identifies students, and verifies their presence against a database.</p>
+              </div>
+              <div className="grid gap-1 text-center">
+                <div className="flex justify-center items-center mb-4">
+                  <div className="p-4 bg-primary/10 rounded-full"><BarChart className="h-10 w-10 text-primary" /></div>
+                </div>
+                <h3 className="text-lg font-bold font-headline">3. Report</h3>
+                <p className="text-sm text-muted-foreground">Attendance is recorded in real-time, with analytics available on the dashboard.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Core Features</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Discover the powerful features that make AttendAI the ultimate attendance solution.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+              {features.map((feature) => (
+                <Card key={feature.title} className="text-center">
+                  <CardHeader>
+                    <div className="flex justify-center">{feature.icon}</div>
+                    <CardTitle className="font-headline mt-4">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="outcomes" className="w-full py-12 md:py-24 lg:py-32 bg-card">
+          <div className="container mx-auto px-4 md:px-6">
+             <div className="grid gap-10 md:grid-cols-2 lg:gap-16 items-center">
+                <div>
+                    <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Expected Outcomes</h2>
+                    <p className="mt-4 text-muted-foreground">
+                        Implementing AttendAI brings tangible benefits to educational institutions.
+                    </p>
+                    <ul className="mt-6 space-y-4">
+                        {outcomes.map((outcome) => (
+                        <li key={outcome} className="flex items-start">
+                            <Check className="h-5 w-5 mt-1 mr-3 flex-shrink-0 text-green-500" />
+                            <span className="text-muted-foreground">{outcome}</span>
+                        </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="flex justify-center">
+                    <Image src="https://placehold.co/550x310.png" alt="Data Analytics Dashboard" data-ai-hint="dashboard analytics" width={550} height={310} className="rounded-lg shadow-xl" />
+                </div>
+             </div>
+          </div>
+        </section>
+
+        <section id="team" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Team</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    Meet the dedicated individuals behind AttendAI.
+                </p>
+            </div>
+            <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
+              {teamMembers.map((member) => (
+                <Card key={member.name} className="text-center overflow-hidden">
+                  <Image src={member.image} data-ai-hint={member.hint} alt={member.name} width={200} height={200} className="mx-auto w-full h-48 object-cover" />
+                  <CardHeader>
+                    <CardTitle className="font-headline text-xl">{member.name}</CardTitle>
+                    <CardDescription>{member.role}</CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 }
