@@ -1,3 +1,4 @@
+
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { AttendanceForm } from './attendance-form';
@@ -21,7 +22,7 @@ export default function DemoPage() {
           
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-2">
-              <AttendanceForm />
+                <AttendanceForm />
             </div>
             <div className="lg:col-span-3 space-y-8">
               <Card>
