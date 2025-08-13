@@ -9,22 +9,22 @@ import Link from 'next/link';
 export default function Home() {
   const features = [
     {
-      icon: <Zap className="h-8 w-8 text-primary" />,
+      icon: <Zap className="h-8 w-8 text-blue-400" />,
       title: 'Automation',
       description: 'Fully automates the attendance process, saving time and reducing manual errors.',
     },
     {
-      icon: <Check className="h-8 w-8 text-primary" />,
+      icon: <Check className="h-8 w-8 text-blue-400" />,
       title: 'Accuracy',
       description: 'Leverages advanced AI for highly accurate facial recognition, ensuring reliable data.',
     },
     {
-      icon: <Gauge className="h-8 w-8 text-primary" />,
+      icon: <Gauge className="h-8 w-8 text-blue-400" />,
       title: 'Speed',
       description: 'Verifies attendance in real-time, providing instant records and analytics.',
     },
     {
-      icon: <Users className="h-8 w-8 text-primary" />,
+      icon: <Users className="h-8 w-8 text-blue-400" />,
       title: 'Scalability',
       description: 'Easily scales from a single classroom to an entire campus without performance loss.',
     },
@@ -188,21 +188,29 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="team" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="team" className="relative w-full py-12 md:py-24 lg:py-32">
+          <Image
+            src="https://i.postimg.cc/MGck8n4C/pexels-cottonbro-9665216.jpg"
+            alt="Team Background"
+            fill
+            style={{objectFit: 'cover'}}
+            className="absolute inset-0 -z-10 h-full w-full"
+          />
+          <div className="absolute inset-0 -z-10 h-full w-full bg-black/60"></div>
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Our Team</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Our Team</h2>
+                <p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                     Meet the dedicated individuals behind AttendAI.
                 </p>
             </div>
             <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
               {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center overflow-hidden">
+                <Card key={member.name} className="text-center overflow-hidden bg-white/10 backdrop-blur-sm border-white/20">
                   <Image src={member.image} data-ai-hint={member.hint} alt={member.name} width={200} height={200} className="mx-auto w-full h-48 object-cover" />
                   <CardHeader>
-                    <CardTitle className="font-headline text-xl">{member.name}</CardTitle>
-                    <CardDescription>{member.role}</CardDescription>
+                    <CardTitle className="font-headline text-xl text-white">{member.name}</CardTitle>
+                    <CardDescription className="text-gray-300">{member.role}</CardDescription>
                   </CardHeader>
                 </Card>
               ))}
