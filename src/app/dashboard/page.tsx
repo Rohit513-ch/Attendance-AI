@@ -2,15 +2,9 @@
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { UserPlus, Users, Camera, ListChecks, Settings, BarChart2 } from 'lucide-react';
+import { UserPlus, Users, Camera, ListChecks, Settings } from 'lucide-react';
 import Link from 'next/link';
-import { AttendanceChart } from '../demo/attendance-chart';
-import { AttendanceTable } from '../demo/attendance-table';
 
 export default function DashboardPage() {
   const actions = [
@@ -29,54 +23,53 @@ export default function DashboardPage() {
       icon: Camera,
       label: 'Mark Attendance',
     },
+     {
+      href: '#',
+      icon: ListChecks,
+      label: 'View Attendance',
+    },
+    {
+      href: '#',
+      icon: Settings,
+      label: 'Configure Camera',
+    },
   ];
 
   return (
-    <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-6">
-      <div className="flex items-center">
-        <h1 className="font-semibold text-lg md:text-2xl">Dashboard</h1>
+    <main className="flex flex-1 flex-col items-center justify-center gap-4 p-4 md:gap-8 md:p-6 text-white">
+      <div className="text-center space-y-4 mb-8">
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl">
+            <span className="text-yellow-400">AI-Powered</span> Face Recognition Attendance
+        </h1>
+        <p className="text-gray-400 md:text-xl">
+            Register students, manage attendance, and integrate AI for seamless recognition.
+        </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
-          {actions.map((action) => (
-            <Card key={action.label} className="relative">
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  {action.label}
-                </CardTitle>
-                <action.icon className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <Button size="sm" asChild>
-                    <Link href={action.href}>Go</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-      </div>
-       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2 space-y-8">
-                 <Card>
-                    <CardHeader className="flex flex-row items-center space-x-2">
-                        <BarChart2 className="w-6 h-6 text-primary" />
-                        <CardTitle className="font-headline">Attendance Analytics</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <AttendanceChart />
+
+      <div className="grid w-full max-w-4xl gap-6 md:grid-cols-3">
+        {actions.slice(0, 3).map((action) => (
+            <Link href={action.href} key={action.label}>
+                <Card className="bg-[#1F2937] border-[#1F2937] hover:bg-[#374151] transition-colors">
+                    <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
+                        <action.icon className="h-10 w-10 text-yellow-400" />
+                        <p className="font-medium">{action.label}</p>
                     </CardContent>
                 </Card>
-            </div>
-            <div className="lg:col-span-3 space-y-8">
-              <Card>
-                <CardHeader className="flex flex-row items-center space-x-2">
-                  <ListChecks className="w-6 h-6 text-primary" />
-                  <CardTitle className="font-headline">Today's Attendance Log</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <AttendanceTable />
-                </CardContent>
-              </Card>
-            </div>
-        </div>
+            </Link>
+        ))}
+      </div>
+       <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2 lg:px-28">
+         {actions.slice(3).map((action) => (
+            <Link href={action.href} key={action.label}>
+                 <Card className="bg-[#1F2937] border-[#1F2937] hover:bg-[#374151] transition-colors">
+                    <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
+                        <action.icon className="h-10 w-10 text-yellow-400" />
+                        <p className="font-medium">{action.label}</p>
+                    </CardContent>
+                </Card>
+            </Link>
+        ))}
+      </div>
     </main>
   );
 }
