@@ -51,25 +51,31 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-card">
+        <section className="relative w-full py-20 md:py-32 lg:py-40">
+           <Image
+            src="https://i.postimg.cc/MGck8n4C/pexels-cottonbro-9665216.jpg"
+            alt="Classroom"
+            layout="fill"
+            objectFit="cover"
+            className="absolute inset-0 -z-10 h-full w-full"
+            />
+          <div className="absolute inset-0 -z-10 h-full w-full bg-black/60"></div>
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-              Automated Attendance, <span className="text-primary">Intelligently Done.</span>
+            <h1 className="text-4xl font-headline font-bold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              Automated Attendance, <span className="text-blue-400">Intelligently Done.</span>
             </h1>
-            <p className="mx-auto mt-6 max-w-[700px] text-lg text-muted-foreground md:text-xl">
+            <p className="mx-auto mt-6 max-w-[700px] text-lg text-gray-300 md:text-xl">
               AttendAI revolutionizes attendance monitoring with cutting-edge AI. Seamless, accurate, and effortless for modern educational institutions.
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button asChild size="lg">
                 <Link href="/dashboard">Go to Dashboard</Link>
               </Button>
-              <Button asChild variant="outline" size="lg">
+              <Button asChild variant="secondary" size="lg">
                 <Link href="#features">Explore Features</Link>
               </Button>
             </div>
           </div>
-          <div
-            className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         </section>
 
         <section id="about" className="w-full py-12 md:py-24 lg:py-32">
