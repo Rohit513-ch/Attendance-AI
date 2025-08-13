@@ -130,25 +130,33 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="features" className="relative w-full py-12 md:py-24 lg:py-32">
+          <Image
+            src="https://i.postimg.cc/MGck8n4C/pexels-cottonbro-9665216.jpg"
+            alt="Features Background"
+            fill
+            style={{objectFit: 'cover'}}
+            className="absolute inset-0 -z-10 h-full w-full"
+            />
+           <div className="absolute inset-0 -z-10 h-full w-full bg-black/60"></div>
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Core Features</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Core Features</h2>
+                <p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Discover the powerful features that make AttendAI the ultimate attendance solution.
                 </p>
               </div>
             </div>
             <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
               {features.map((feature) => (
-                <Card key={feature.title} className="text-center">
+                <Card key={feature.title} className="text-center bg-white/10 backdrop-blur-sm border-white/20">
                   <CardHeader>
                     <div className="flex justify-center">{feature.icon}</div>
-                    <CardTitle className="font-headline mt-4">{feature.title}</CardTitle>
+                    <CardTitle className="font-headline mt-4 text-white">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-muted-foreground">{feature.description}</p>
+                    <p className="text-gray-300">{feature.description}</p>
                   </CardContent>
                 </Card>
               ))}
