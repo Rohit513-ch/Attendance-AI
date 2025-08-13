@@ -7,8 +7,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { UserPlus, Users, Camera, ListChecks, Settings } from 'lucide-react';
+import { UserPlus, Users, Camera, ListChecks, Settings, BarChart2 } from 'lucide-react';
 import Link from 'next/link';
+import { AttendanceChart } from '../demo/attendance-chart';
+import { AttendanceTable } from '../demo/attendance-table';
 
 export default function DashboardPage() {
   const actions = [
@@ -51,6 +53,30 @@ export default function DashboardPage() {
             </Card>
           ))}
       </div>
+       <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            <div className="lg:col-span-2 space-y-8">
+                 <Card>
+                    <CardHeader className="flex flex-row items-center space-x-2">
+                        <BarChart2 className="w-6 h-6 text-primary" />
+                        <CardTitle className="font-headline">Attendance Analytics</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <AttendanceChart />
+                    </CardContent>
+                </Card>
+            </div>
+            <div className="lg:col-span-3 space-y-8">
+              <Card>
+                <CardHeader className="flex flex-row items-center space-x-2">
+                  <ListChecks className="w-6 h-6 text-primary" />
+                  <CardTitle className="font-headline">Today's Attendance Log</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <AttendanceTable />
+                </CardContent>
+              </Card>
+            </div>
+        </div>
     </main>
   );
 }
