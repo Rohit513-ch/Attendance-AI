@@ -55,8 +55,8 @@ export default function Home() {
            <Image
             src="https://i.postimg.cc/MGck8n4C/pexels-cottonbro-9665216.jpg"
             alt="Classroom"
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{objectFit: 'cover'}}
             className="absolute inset-0 -z-10 h-full w-full"
             />
           <div className="absolute inset-0 -z-10 h-full w-full bg-black/60"></div>
