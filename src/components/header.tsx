@@ -31,7 +31,7 @@ export function Header() {
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
           <Button asChild>
-            <Link href="/demo">View Demo</Link>
+            <Link href="/dashboard">Dashboard</Link>
           </Button>
           <Sheet>
             <SheetTrigger asChild>
@@ -56,7 +56,7 @@ export function Header() {
                   </Link>
                 ))}
                  <Button asChild className="mt-4">
-                    <Link href="/demo">View Demo</Link>
+                    <Link href="/dashboard">Dashboard</Link>
                 </Button>
               </div>
             </SheetContent>
