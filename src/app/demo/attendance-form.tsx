@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useState, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -23,7 +23,7 @@ function SubmitButton() {
 
 export function AttendanceForm() {
     const initialState: FormState = { status: 'idle', message: '', result: null };
-    const [state, formAction] = useFormState(verifyAttendanceAction, initialState);
+    const [state, formAction] = useActionState(verifyAttendanceAction, initialState);
 
     const [studentPhotoPreview, setStudentPhotoPreview] = useState<string | null>(null);
     const [referencePhotoPreview, setReferencePhotoPreview] = useState<string | null>(null);
