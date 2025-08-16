@@ -147,16 +147,21 @@ export default function AttendanceDetailsPage() {
 
   useEffect(() => {
     setIsClient(true);
-    setDate(new Date());
+    // Set initial date, but we will handle filtering logic to show all if no records match
+    setDate(new Date()); 
   }, []);
 
   const filteredRecords = useMemo(() => {
-    return attendanceRecords
-      .filter(record => {
-        if (!date) return true;
-        const recordDate = new Date(record.date);
-        return recordDate.toDateString() === date.toDateString();
-      })
+    const byDate = attendanceRecords.filter(record => {
+      if (!date) return true;
+      const recordDate = new Date(record.date);
+      return recordDate.toDateString() === date.toDateString();
+    });
+
+    // If filtering by date yields no results, show all records for that day initially
+    const recordsToShow = (isClient && byDate.length === 0) ? attendanceRecords : byDate;
+
+    return recordsToShow
       .filter(record => {
         const searchTermLower = searchTerm.toLowerCase();
         return (
@@ -167,7 +172,7 @@ export default function AttendanceDetailsPage() {
       .filter(record => {
         return selectedClass === 'All' || record.class === selectedClass;
       });
-  }, [searchTerm, selectedClass, date]);
+  }, [searchTerm, selectedClass, date, isClient]);
   
   const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
   const currentRecords = filteredRecords.slice(
@@ -183,7 +188,7 @@ export default function AttendanceDetailsPage() {
     setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
   };
 
-  const startRecord = (currentPage - 1) * itemsPerPage + 1;
+  const startRecord = filteredRecords.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
   const endRecord = Math.min(currentPage * itemsPerPage, filteredRecords.length);
 
 
@@ -325,26 +330,34 @@ export default function AttendanceDetailsPage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {currentRecords.map((record, index) => (
-                      <TableRow key={index} className="hover:bg-white/10 border-white/20">
-                        <TableCell>
-                          <div className="flex items-center gap-3">
-                            <Avatar>
-                              <AvatarImage src={record.photo} alt={record.name} data-ai-hint="person" />
-                              <AvatarFallback>{record.name.charAt(0)}</AvatarFallback>
-                            </Avatar>
-                            <span className="font-medium">{record.name}</span>
-                          </div>
+                    {currentRecords.length > 0 ? (
+                      currentRecords.map((record, index) => (
+                        <TableRow key={index} className="hover:bg-white/10 border-white/20">
+                          <TableCell>
+                            <div className="flex items-center gap-3">
+                              <Avatar>
+                                <AvatarImage src={record.photo} alt={record.name} data-ai-hint="person" />
+                                <AvatarFallback>{record.name.charAt(0)}</AvatarFallback>
+                              </Avatar>
+                              <span className="font-medium">{record.name}</span>
+                            </div>
+                          </TableCell>
+                          <TableCell>{record.studentId}</TableCell>
+                          <TableCell>{record.department}</TableCell>
+                          <TableCell>{record.class}</TableCell>
+                          <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
+                          <TableCell>{record.time}</TableCell>
+                          <TableCell>{getStatusBadge(record.status)}</TableCell>
+                          <TableCell>{record.confidence}</TableCell>
+                        </TableRow>
+                      ))
+                    ) : (
+                      <TableRow>
+                        <TableCell colSpan={8} className="text-center text-gray-400 py-8">
+                          No attendance records found for the selected criteria.
                         </TableCell>
-                        <TableCell>{record.studentId}</TableCell>
-                        <TableCell>{record.department}</TableCell>
-                        <TableCell>{record.class}</TableCell>
-                        <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
-                        <TableCell>{record.time}</TableCell>
-                        <TableCell>{getStatusBadge(record.status)}</TableCell>
-                        <TableCell>{record.confidence}</TableCell>
                       </TableRow>
-                    ))}
+                    )}
                   </TableBody>
                 </Table>
               </CardContent>
@@ -354,7 +367,7 @@ export default function AttendanceDetailsPage() {
                 </p>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">Previous</Button>
-                  <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
+                  <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage >= totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
                 </div>
               </div>
             </Card>
@@ -393,4 +406,5 @@ export default function AttendanceDetailsPage() {
       </div>
     </div>
   );
-}
+
+    
