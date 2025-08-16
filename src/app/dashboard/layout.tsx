@@ -13,8 +13,6 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarInset,
-  SidebarTrigger,
-  SidebarHeader
 } from '@/components/ui/sidebar';
 import {
   UserPlus,
@@ -22,7 +20,6 @@ import {
   Camera,
   ListChecks,
   LogOut,
-  Menu,
 } from 'lucide-react';
 
 export default function DashboardLayout({
@@ -42,9 +39,6 @@ export default function DashboardLayout({
     <SidebarProvider>
       <div className="flex min-h-screen bg-[#111827]">
         <Sidebar>
-            <SidebarHeader>
-              <SidebarTrigger />
-            </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
               {navItems.map((item, index) => (
@@ -72,12 +66,14 @@ export default function DashboardLayout({
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
-        <SidebarInset>
+        <div className="flex-1">
           <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-blue-950/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-blue-950/60 sm:px-6">
             <div className="flex-1" />
           </header>
-          {children}
-        </SidebarInset>
+          <SidebarInset>
+            {children}
+          </SidebarInset>
+        </div>
       </div>
     </SidebarProvider>
   );
