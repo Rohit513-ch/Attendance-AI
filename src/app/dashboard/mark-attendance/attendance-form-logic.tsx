@@ -56,10 +56,14 @@ export function AttendanceFormLogic() {
         } catch (error) {
             console.error('Error accessing camera:', error);
             setHasCameraPermission(false);
+            let description = 'Please enable camera permissions in your browser settings to use this app.';
+            if (error instanceof DOMException && error.name === "NotAllowedError") {
+              description = "Camera access was denied. Please enable it in your browser settings to continue.";
+            }
             toast({
-            variant: 'destructive',
-            title: 'Camera Access Denied',
-            description: 'Please enable camera permissions in your browser settings to use this app.',
+              variant: 'destructive',
+              title: 'Camera Access Denied',
+              description: description,
             });
         }
         };
