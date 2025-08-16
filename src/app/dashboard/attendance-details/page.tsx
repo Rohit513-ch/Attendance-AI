@@ -54,6 +54,8 @@ const attendanceRecords = [
     time: '09:01 AM',
     studentId: '23CSE012',
     name: 'Devi Prasad Mohanty',
+    department: 'CSE',
+    class: 'CSE-A',
     status: 'Present',
     confidence: '99%',
     cameraId: 'CAM-01',
@@ -64,6 +66,8 @@ const attendanceRecords = [
     time: '09:02 AM',
     studentId: '23CSE024',
     name: 'Pratik Kar',
+    department: 'CSE',
+    class: 'CSE-A',
     status: 'Present',
     confidence: '97%',
     cameraId: 'CAM-01',
@@ -74,6 +78,8 @@ const attendanceRecords = [
     time: '--',
     studentId: '23CSE045',
     name: 'Rohit Pandit',
+    department: 'CSE',
+    class: 'CSE-B',
     status: 'Absent',
     confidence: '--',
     cameraId: '--',
@@ -82,8 +88,10 @@ const attendanceRecords = [
   {
     date: '2024-05-20',
     time: '09:16 AM',
-    studentId: '23CSE018',
+    studentId: '23ECE018',
     name: 'Shyam Gupta',
+    department: 'ECE',
+    class: 'ECE-A',
     status: 'Late',
     confidence: '98%',
     cameraId: 'CAM-02',
@@ -94,6 +102,8 @@ const attendanceRecords = [
     time: '09:05 AM',
     studentId: '23CSE033',
     name: 'Chitranshu Sanket',
+    department: 'CSE',
+    class: 'CSE-B',
     status: 'Present',
     confidence: '96%',
     cameraId: 'CAM-01',
@@ -145,10 +155,12 @@ export default function AttendanceDetailsPage() {
     doc.text('Attendance Records', 14, 16);
     (doc as any).autoTable({
       startY: 20,
-      head: [['Student', 'Roll No.', 'Date', 'Time', 'Status', 'Confidence']],
+      head: [['Student', 'Roll No.', 'Department', 'Class', 'Date', 'Time', 'Status', 'Confidence']],
       body: attendanceRecords.map(record => [
         record.name,
         record.studentId,
+        record.department,
+        record.class,
         format(new Date(record.date), 'dd MMM, yyyy'),
         record.time,
         record.status,
@@ -162,6 +174,8 @@ export default function AttendanceDetailsPage() {
     const worksheet = XLSX.utils.json_to_sheet(attendanceRecords.map(record => ({
       'Student': record.name,
       'Roll No.': record.studentId,
+      'Department': record.department,
+      'Class': record.class,
       'Date': format(new Date(record.date), 'dd MMM, yyyy'),
       'Time': record.time,
       'Status': record.status,
@@ -275,6 +289,8 @@ export default function AttendanceDetailsPage() {
                         <TableRow>
                           <TableHead>Student</TableHead>
                           <TableHead>Roll No.</TableHead>
+                          <TableHead>Department</TableHead>
+                          <TableHead>Class</TableHead>
                           <TableHead>Date</TableHead>
                           <TableHead>Time</TableHead>
                           <TableHead>Status</TableHead>
@@ -294,6 +310,8 @@ export default function AttendanceDetailsPage() {
                               </div>
                             </TableCell>
                             <TableCell>{record.studentId}</TableCell>
+                            <TableCell>{record.department}</TableCell>
+                            <TableCell>{record.class}</TableCell>
                             <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
                             <TableCell>{record.time}</TableCell>
                             <TableCell>{getStatusBadge(record.status)}</TableCell>
@@ -355,3 +373,4 @@ export default function AttendanceDetailsPage() {
     </div>
   );
 }
+
