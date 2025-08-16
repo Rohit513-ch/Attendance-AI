@@ -386,10 +386,6 @@ export default function AttendanceDetailsPage() {
                   <span className="text-gray-300">Absent</span>
                   <span className="font-bold text-red-400">3</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-300">Late</span>
-                  <span className="font-bold text-yellow-400">2</span>
-                </div>
               </CardContent>
             </Card>
           </div>
