@@ -13,7 +13,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
-  SidebarTrigger,
   SidebarInset,
 } from '@/components/ui/sidebar';
 import {
@@ -46,7 +45,6 @@ export default function DashboardLayout({
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-bold text-yellow-400">AI Dashboard</h2>
             </div>
-            <SidebarTrigger className="text-white"/>
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
