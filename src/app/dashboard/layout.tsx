@@ -39,11 +39,11 @@ export default function DashboardLayout({
     <SidebarProvider>
       <div className="flex min-h-screen bg-background">
         <Sidebar className="flex-shrink-0">
-          <SidebarContent className="bg-blue-950 text-white flex flex-col">
+          <SidebarContent className="bg-black text-white flex flex-col">
             <SidebarMenu className="flex-1">
               {navItems.map((item, index) => (
                 <SidebarMenuItem key={index}>
-                  <SidebarMenuButton asChild isActive={pathname === item.href} className="text-white hover:bg-blue-900 data-[active=true]:bg-blue-800">
+                  <SidebarMenuButton asChild isActive={pathname === item.href} className="text-white hover:bg-gray-800 data-[active=true]:bg-gray-700">
                     <Link href={item.href}>
                       <item.icon className="h-4 w-4 text-white" />
                       <span className="text-white">{item.label}</span>
@@ -55,7 +55,7 @@ export default function DashboardLayout({
             <SidebarFooter className="mt-auto">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton asChild className="text-white hover:bg-blue-900">
+                        <SidebarMenuButton asChild className="text-white hover:bg-gray-800">
                             <Link href="/">
                                 <LogOut className="h-4 w-4" />
                                 <span className="text-white">Logout</span>
