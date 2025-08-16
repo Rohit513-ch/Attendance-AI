@@ -30,9 +30,6 @@ export function Header() {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <Button asChild>
-            <Link href="/dashboard">Dashboard</Link>
-          </Button>
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -55,9 +52,6 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
-                 <Button asChild className="mt-4">
-                    <Link href="/dashboard">Dashboard</Link>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>
