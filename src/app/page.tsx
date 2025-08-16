@@ -86,7 +86,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="methodology" className="w-full py-12 md:py-24 lg:py-32 bg-card border rounded-lg">
+        <section id="methodology" className="w-full py-12 md:py-24 lg:py-32 bg-background border border-gray-800 rounded-lg">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
