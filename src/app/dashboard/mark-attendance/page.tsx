@@ -1,6 +1,6 @@
 
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
+'use client';
+
 import { AttendanceForm } from './attendance-form';
 import { AttendanceTable } from './attendance-table';
 import { AttendanceChart } from './attendance-chart';
