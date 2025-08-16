@@ -246,7 +246,7 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function AttendanceDetailsPage() {
-  const [date, setDate] = useState<Date | undefined>(undefined);
+  const [date, setDate] = useState<Date | undefined>(new Date('2024-05-20'));
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
@@ -255,7 +255,6 @@ export default function AttendanceDetailsPage() {
 
   useEffect(() => {
     setIsClient(true);
-    setDate(new Date('2024-05-20'));
   }, []);
 
   const filteredRecords = useMemo(() => {
