@@ -30,8 +30,7 @@ import {
   BarChart2,
 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { DateRange } from 'react-day-picker';
-import { addDays, format } from 'date-fns';
+import { format } from 'date-fns';
 import { Calendar } from '@/components/ui/calendar';
 import {
   Popover,
@@ -140,10 +139,7 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function AttendanceDetailsPage() {
-  const [date, setDate] = useState<DateRange | undefined>({
-    from: addDays(new Date(), -7),
-    to: new Date(),
-  });
+  const [date, setDate] = useState<Date | undefined>(new Date());
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState('All');
@@ -155,6 +151,11 @@ export default function AttendanceDetailsPage() {
   const filteredRecords = useMemo(() => {
     return attendanceRecords
       .filter(record => {
+        if (!date) return true;
+        const recordDate = new Date(record.date);
+        return recordDate.toDateString() === date.toDateString();
+      })
+      .filter(record => {
         const searchTermLower = searchTerm.toLowerCase();
         return (
           record.name.toLowerCase().includes(searchTermLower) ||
@@ -164,7 +165,7 @@ export default function AttendanceDetailsPage() {
       .filter(record => {
         return selectedClass === 'All' || record.class === selectedClass;
       });
-  }, [searchTerm, selectedClass]);
+  }, [searchTerm, selectedClass, date]);
 
 
   const handleDownloadPdf = () => {
@@ -246,20 +247,13 @@ export default function AttendanceDetailsPage() {
                             id="date"
                             variant={"outline"}
                             className={cn(
-                              "w-full sm:w-[300px] justify-start text-left font-normal",
+                              "w-full sm:w-[240px] justify-start text-left font-normal",
                               !date && "text-muted-foreground"
                             )}
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
-                            {date?.from ? (
-                              date.to ? (
-                                <>
-                                  {format(date.from, "LLL dd, y")} -{" "}
-                                  {format(date.to, "LLL dd, y")}
-                                </>
-                              ) : (
-                                format(date.from, "LLL dd, y")
-                              )
+                            {date ? (
+                              format(date, "LLL dd, y")
                             ) : (
                               <span>Pick a date</span>
                             )}
@@ -267,12 +261,10 @@ export default function AttendanceDetailsPage() {
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
-                            initialFocus
-                            mode="range"
-                            defaultMonth={date?.from}
+                            mode="single"
                             selected={date}
                             onSelect={setDate}
-                            numberOfMonths={2}
+                            initialFocus
                           />
                         </PopoverContent>
                       </Popover>
