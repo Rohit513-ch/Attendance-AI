@@ -152,14 +152,28 @@ export default function AttendanceDetailsPage() {
   }, []);
 
   const filteredRecords = useMemo(() => {
-    const byDate = attendanceRecords.filter(record => {
-      if (!date) return true;
-      const recordDate = new Date(record.date);
-      return recordDate.toDateString() === date.toDateString();
-    });
+    let recordsToShow = attendanceRecords;
 
-    // If filtering by date yields no results, show all records for that day initially
-    const recordsToShow = (isClient && byDate.length === 0) ? attendanceRecords : byDate;
+    if (date) {
+        const byDate = attendanceRecords.filter(record => {
+            const recordDate = new Date(record.date);
+            return recordDate.toDateString() === date.toDateString();
+        });
+
+        // If filtering by date yields results, use them. Otherwise, we'll use all records.
+        if (byDate.length > 0) {
+            recordsToShow = byDate;
+        } else {
+             // This part handles the case where the initial date has no records.
+             // We check if the current date is the same as the initial `new Date()` set in useEffect.
+             // If so, and there are no records, we show all data.
+             // If the user *manually* picks a date with no records, we show "no records found".
+             const today = new Date();
+             if (date.toDateString() !== today.toDateString()) {
+                recordsToShow = [];
+             }
+        }
+    }
 
     return recordsToShow
       .filter(record => {
@@ -406,5 +420,7 @@ export default function AttendanceDetailsPage() {
       </div>
     </div>
   );
+
+    
 
     

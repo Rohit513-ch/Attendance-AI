@@ -280,7 +280,7 @@ export default function ViewAuthorizeStudentsPage() {
     setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
   };
 
-  const startRecord = (currentPage - 1) * itemsPerPage + 1;
+  const startRecord = filteredStudents.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
   const endRecord = Math.min(currentPage * itemsPerPage, filteredStudents.length);
 
 
@@ -431,7 +431,7 @@ export default function ViewAuthorizeStudentsPage() {
               <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">
                 Previous
               </Button>
-              <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">
+              <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage >= totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">
                 Next
               </Button>
             </div>
@@ -456,3 +456,5 @@ export default function ViewAuthorizeStudentsPage() {
     </div>
   );
 }
+
+    
