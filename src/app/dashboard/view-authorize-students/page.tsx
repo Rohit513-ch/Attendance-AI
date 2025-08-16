@@ -266,12 +266,20 @@ export default function ViewAuthorizeStudentsPage() {
       });
   }, [students, searchTerm, selectedDepartment, selectedStatus]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm, selectedDepartment, selectedStatus]);
+
+
   const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
-  const currentStudents = filteredStudents.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
   
+  const currentStudents = useMemo(() => {
+    return filteredStudents.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+  }, [filteredStudents, currentPage, itemsPerPage]);
+
   const handlePreviousPage = () => {
     setCurrentPage(prev => (prev > 1 ? prev - 1 : 1));
   };
@@ -456,5 +464,3 @@ export default function ViewAuthorizeStudentsPage() {
     </div>
   );
 }
-
-    

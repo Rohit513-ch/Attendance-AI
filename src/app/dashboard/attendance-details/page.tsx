@@ -266,16 +266,7 @@ export default function AttendanceDetailsPage() {
             const recordDate = new Date(record.date);
             return recordDate.toDateString() === date.toDateString();
         });
-
-        // If filtering by date yields results, use them. Otherwise, we'll use all records.
-        if (byDate.length > 0) {
-            recordsToShow = byDate;
-        } else {
-             const today = new Date('2024-05-20');
-             if (date.toDateString() !== today.toDateString()) {
-                recordsToShow = [];
-             }
-        }
+        recordsToShow = byDate;
     }
 
     return recordsToShow
@@ -292,10 +283,13 @@ export default function AttendanceDetailsPage() {
   }, [searchTerm, selectedDepartment, date]);
   
   const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
-  const currentRecords = filteredRecords.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  
+  const currentRecords = useMemo(() => {
+      return filteredRecords.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+      );
+  },[filteredRecords, currentPage, itemsPerPage]);
 
   const handlePreviousPage = () => {
     setCurrentPage(prev => (prev > 1 ? prev - 1 : 1));
@@ -305,9 +299,9 @@ export default function AttendanceDetailsPage() {
     setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
   };
   
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchTerm, selectedDepartment, date]);
+  useEffect(() => {
+      setCurrentPage(1);
+  }, [searchTerm, selectedDepartment, date]);
 
 
   const startRecord = filteredRecords.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
