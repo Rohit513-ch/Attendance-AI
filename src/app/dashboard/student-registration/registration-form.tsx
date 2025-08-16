@@ -25,7 +25,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 export function RegistrationForm() {
   return (
-      <Card className="w-full max-w-4xl">
+      <Card className="w-[80%] max-w-[800px] mx-auto my-0 p-5 rounded-xl shadow-lg bg-card">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
             Student Registration Form
