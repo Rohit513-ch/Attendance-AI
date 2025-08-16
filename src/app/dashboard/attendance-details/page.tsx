@@ -366,7 +366,7 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function AttendanceDetailsPage() {
-  const [date, setDate] = useState<Date | undefined>(new Date('2024-05-20'));
+  const [date, setDate] = useState<Date | undefined>();
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
