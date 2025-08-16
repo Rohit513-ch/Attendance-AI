@@ -47,101 +47,173 @@ import type { RowInput } from 'jspdf-autotable';
 
 
 const attendanceRecords = [
-  {
-    date: '2024-05-20',
-    time: '09:01 AM',
-    studentId: '23CSE012',
-    name: 'Devi Prasad Mohanty',
-    department: 'CSE',
-    class: 'CSE-A',
-    status: 'Present',
-    confidence: '99%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
-  },
-  {
-    date: '2024-05-20',
-    time: '09:02 AM',
-    studentId: '23CSE024',
-    name: 'Pratik Kar',
-    department: 'CSE',
-    class: 'CSE-A',
-    status: 'Present',
-    confidence: '97%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
-  },
-  {
-    date: '2024-05-20',
-    time: '--',
-    studentId: '23CSE045',
-    name: 'Rohit Pandit',
-    department: 'CSE',
-    class: 'CSE-B',
-    status: 'Absent',
-    confidence: '--',
-    cameraId: '--',
-    photo: 'https://placehold.co/40x40.png'
-  },
-  {
-    date: '2024-05-20',
-    time: '09:16 AM',
-    studentId: '23ECE018',
-    name: 'Shyam Gupta',
-    department: 'ECE',
-    class: 'ECE-A',
-    status: 'Late',
-    confidence: '98%',
-    cameraId: 'CAM-02',
-    photo: 'https://placehold.co/40x40.png'
-  },
-  {
-    date: '2024-05-20',
-    time: '09:05 AM',
-    studentId: '23CSE033',
-    name: 'Chitranshu Sanket',
-    department: 'CSE',
-    class: 'CSE-B',
-    status: 'Present',
-    confidence: '96%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
-  },
-  {
-    date: '2024-05-21',
-    time: '09:00 AM',
-    studentId: '23CSE012',
-    name: 'Devi Prasad Mohanty',
-    department: 'CSE',
-    class: 'CSE-A',
-    status: 'Present',
-    confidence: '99%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
+    {
+        date: '2024-05-20',
+        time: '09:01 AM',
+        studentId: '23CSE001',
+        name: 'Aarav Sharma',
+        department: 'CSE',
+        class: 'CSE-A',
+        status: 'Present',
+        confidence: '99%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
     },
     {
-    date: '2024-05-21',
-    time: '09:03 AM',
-    studentId: '23CSE024',
-    name: 'Pratik Kar',
-    department: 'CSE',
-    class: 'CSE-A',
-    status: 'Present',
-    confidence: '98%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
+        date: '2024-05-20',
+        time: '09:02 AM',
+        studentId: '23ECE012',
+        name: 'Diya Singh',
+        department: 'ECE',
+        class: 'ECE-B',
+        status: 'Present',
+        confidence: '97%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-20',
+        time: '--',
+        studentId: '23MECH034',
+        name: 'Rohan Gupta',
+        department: 'Mechanical',
+        class: 'MECH-A',
+        status: 'Absent',
+        confidence: '--',
+        cameraId: '--',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-20',
+        time: '09:16 AM',
+        studentId: '23CSE021',
+        name: 'Priya Patel',
+        department: 'CSE',
+        class: 'CSE-A',
+        status: 'Late',
+        confidence: '98%',
+        cameraId: 'CAM-02',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-20',
+        time: '09:05 AM',
+        studentId: '23IT005',
+        name: 'Advik Kumar',
+        department: 'IT',
+        class: 'IT-A',
+        status: 'Present',
+        confidence: '96%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-21',
+        time: '09:00 AM',
+        studentId: '23CSE001',
+        name: 'Aarav Sharma',
+        department: 'CSE',
+        class: 'CSE-A',
+        status: 'Present',
+        confidence: '99%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-21',
+        time: '09:03 AM',
+        studentId: '23ECE012',
+        name: 'Diya Singh',
+        department: 'ECE',
+        class: 'ECE-B',
+        status: 'Present',
+        confidence: '98%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-21',
+        time: '--',
+        studentId: '23MECH034',
+        name: 'Rohan Gupta',
+        department: 'Mechanical',
+        class: 'MECH-A',
+        status: 'Absent',
+        confidence: '--',
+        cameraId: '--',
+        photo: 'https://placehold.co/40x40.png'
     },
      {
-    date: '2024-05-21',
-    time: '09:05 AM',
-    studentId: '23CSE045',
-    name: 'Rohit Pandit',
-    department: 'CSE',
-    class: 'CSE-B',
-    status: 'Present',
-    confidence: '95%',
-    cameraId: 'CAM-01',
-    photo: 'https://placehold.co/40x40.png'
+        date: '2024-05-21',
+        time: '09:05 AM',
+        studentId: '23CSE021',
+        name: 'Priya Patel',
+        department: 'CSE',
+        class: 'CSE-A',
+        status: 'Present',
+        confidence: '95%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-21',
+        time: '09:08 AM',
+        studentId: '23IT005',
+        name: 'Advik Kumar',
+        department: 'IT',
+        class: 'IT-A',
+        status: 'Present',
+        confidence: '97%',
+        cameraId: 'CAM-01',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:02 AM',
+        studentId: '23CSE686',
+        name: 'Satyam Chand',
+        department: 'CSE',
+        class: 'CSE-C',
+        status: 'Present',
+        confidence: '98%',
+        cameraId: 'CAM-03',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '--',
+        studentId: '23CSE687',
+        name: 'Soumya Sukriti',
+        department: 'CSE',
+        class: 'CSE-C',
+        status: 'Absent',
+        confidence: '--',
+        cameraId: '--',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:18 AM',
+        studentId: '23CSE688',
+        name: 'Pratik Priyadarshi',
+        department: 'CSE',
+        class: 'CSE-C',
+        status: 'Late',
+        confidence: '99%',
+        cameraId: 'CAM-03',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:04 AM',
+        studentId: '23CSE689',
+        name: 'Aditya Kumar Sharma',
+        department: 'CSE',
+        class: 'CSE-C',
+        status: 'Present',
+        confidence: '96%',
+        cameraId: 'CAM-03',
+        photo: 'https://placehold.co/40x40.png'
     },
 ];
 
@@ -183,8 +255,7 @@ export default function AttendanceDetailsPage() {
 
   useEffect(() => {
     setIsClient(true);
-    // Set initial date, but we will handle filtering logic to show all if no records match
-    setDate(new Date()); 
+    setDate(new Date('2024-05-20'));
   }, []);
 
   const filteredRecords = useMemo(() => {
@@ -200,11 +271,7 @@ export default function AttendanceDetailsPage() {
         if (byDate.length > 0) {
             recordsToShow = byDate;
         } else {
-             // This part handles the case where the initial date has no records.
-             // We check if the current date is the same as the initial `new Date()` set in useEffect.
-             // If so, and there are no records, we show all data.
-             // If the user *manually* picks a date with no records, we show "no records found".
-             const today = new Date();
+             const today = new Date('2024-05-20');
              if (date.toDateString() !== today.toDateString()) {
                 recordsToShow = [];
              }
