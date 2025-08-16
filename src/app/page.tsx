@@ -88,7 +88,7 @@ export default function Home() {
                 </p>
               </div>
               <div className="flex justify-center">
-                <Image src="https://placehold.co/550x310.png" alt="AI Face Recognition Graphic" data-ai-hint="facial recognition" width={550} height={310} className="rounded-lg shadow-xl" />
+                <Image src="https://i.postimg.cc/j5RGKbDp/5597107-56387-1024x642.jpg" alt="AI Face Recognition Graphic" data-ai-hint="facial recognition" width={550} height={310} className="rounded-lg shadow-xl" />
               </div>
             </div>
           </div>
