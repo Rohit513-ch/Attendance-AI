@@ -237,7 +237,7 @@ function FaceDataForm({ setValue, watch }: any) {
 
 const stepSchemas = [personalInfoSchema, contactInfoSchema, authSchema, faceDataSchema];
 
-export default function StudentRegistrationPage() {
+function RegistrationForm() {
     const methods = useForm<FormData>({
         resolver: async (data, context, options) => {
             const currentStepSchema = stepSchemas[currentStepIndex];
@@ -273,46 +273,58 @@ export default function StudentRegistrationPage() {
     };
 
     return (
+        <Card className="bg-gray-800 border-gray-700">
+            <CardHeader>
+                <CardTitle className="text-yellow-400">Student Registration</CardTitle>
+                <CardDescription className="text-gray-400">
+                    Fill out the form to register a new student. 
+                    Step {currentStepIndex + 1} of {steps.length}
+                </CardDescription>
+                <Progress value={((currentStepIndex + 1) / steps.length) * 100} className="mt-2" />
+            </CardHeader>
+            <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                    <CardContent>
+                        {step}
+                    </CardContent>
+                    <CardFooter className="flex justify-between mt-6">
+                        <div>
+                            {!isFirstStep && (
+                                <Button type="button" variant="outline" onClick={back}>
+                                    <ArrowLeft className="mr-2 h-4 w-4" /> Back
+                                </Button>
+                            )}
+                        </div>
+                        <div className="flex gap-4">
+                            {isLastStep ? (
+                                <Button type="submit">
+                                    Submit Registration
+                                </Button>
+                            ) : (
+                                <Button type="button" onClick={handleNext}>
+                                    Next <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            )}
+                            <Button type="reset" variant="destructive" onClick={() => methods.reset()}>Reset</Button>
+                        </div>
+                    </CardFooter>
+                </form>
+            </FormProvider>
+        </Card>
+    )
+}
+
+export default function StudentRegistrationPage() {
+    const [isClient, setIsClient] = useState(false)
+ 
+    useEffect(() => {
+        setIsClient(true)
+    }, [])
+
+    return (
         <main className="flex-1 p-4 md:p-6 text-white">
             <div className="mx-auto max-w-4xl">
-                <Card className="bg-gray-800 border-gray-700">
-                    <CardHeader>
-                        <CardTitle className="text-yellow-400">Student Registration</CardTitle>
-                        <CardDescription className="text-gray-400">
-                            Fill out the form to register a new student. 
-                            Step {currentStepIndex + 1} of {steps.length}
-                        </CardDescription>
-                        <Progress value={((currentStepIndex + 1) / steps.length) * 100} className="mt-2" />
-                    </CardHeader>
-                    <FormProvider {...methods}>
-                        <form onSubmit={methods.handleSubmit(onSubmit)}>
-                            <CardContent>
-                                {step}
-                            </CardContent>
-                            <CardFooter className="flex justify-between mt-6">
-                                <div>
-                                    {!isFirstStep && (
-                                        <Button type="button" variant="outline" onClick={back}>
-                                            <ArrowLeft className="mr-2 h-4 w-4" /> Back
-                                        </Button>
-                                    )}
-                                </div>
-                                <div className="flex gap-4">
-                                    {isLastStep ? (
-                                        <Button type="submit">
-                                            Submit Registration
-                                        </Button>
-                                    ) : (
-                                        <Button type="button" onClick={handleNext}>
-                                            Next <ArrowRight className="ml-2 h-4 w-4" />
-                                        </Button>
-                                    )}
-                                    <Button type="reset" variant="destructive" onClick={() => methods.reset()}>Reset</Button>
-                                </div>
-                            </CardFooter>
-                        </form>
-                    </FormProvider>
-                </Card>
+                {isClient ? <RegistrationForm /> : null}
             </div>
         </main>
     );
