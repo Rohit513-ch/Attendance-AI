@@ -166,6 +166,10 @@ export default function ViewAuthorizeStudentsPage() {
   }, [students, searchTerm, selectedDepartment, selectedStatus]);
 
 
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <div className="relative min-h-screen">
       <Image
@@ -176,7 +180,7 @@ export default function ViewAuthorizeStudentsPage() {
       />
       <div className="absolute inset-0 bg-black/50" />
       <main className="relative flex-1 p-4 md:p-6 lg:p-8">
-        {isClient && (
+        
           <div className="mx-auto w-full max-w-7xl">
             <div className="mb-8">
               <h1 className="text-3xl font-bold tracking-tight text-white">
@@ -325,7 +329,7 @@ export default function ViewAuthorizeStudentsPage() {
               </div>
             </div>
           </div>
-        )}
+        
       </main>
       
       {editingStudent && (

@@ -139,13 +139,14 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function AttendanceDetailsPage() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = useState<Date | undefined>(undefined);
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState('All');
 
   useEffect(() => {
     setIsClient(true);
+    setDate(new Date());
   }, []);
 
   const filteredRecords = useMemo(() => {
@@ -204,6 +205,9 @@ export default function AttendanceDetailsPage() {
     XLSX.writeFile(workbook, 'attendance-records.xlsx');
   };
 
+  if (!isClient) {
+    return null;
+  }
 
   return (
     <div className="relative min-h-screen">
@@ -215,7 +219,7 @@ export default function AttendanceDetailsPage() {
       />
       <div className="absolute inset-0 bg-black/50" />
       <main className="relative flex-1 p-4 md:p-6 lg:p-8">
-        {isClient && (
+        
           <div className="mx-auto w-full max-w-7xl">
             <div className="mb-8">
               <h1 className="text-3xl font-bold tracking-tight text-white">
@@ -382,7 +386,7 @@ export default function AttendanceDetailsPage() {
               </div>
             </div>
           </div>
-        )}
+        
       </main>
     </div>
   );
