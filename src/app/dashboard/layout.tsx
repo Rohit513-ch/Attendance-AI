@@ -76,8 +76,8 @@ export default function DashboardLayout({
           </SidebarFooter>
         </Sidebar>
         <SidebarInset>
-          <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-[#111827]/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-[#111827]/60 sm:px-6 md:hidden">
-            <SidebarTrigger className="md:hidden text-white"/>
+          <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-[#111827]/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-[#111827]/60 sm:px-6">
+            <SidebarTrigger className="text-white"/>
           </header>
           {children}
         </SidebarInset>
