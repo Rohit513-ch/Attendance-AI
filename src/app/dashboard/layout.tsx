@@ -18,6 +18,7 @@ import {
   LogOut,
   Menu,
 } from 'lucide-react';
+import Image from 'next/image';
 
 export default function DashboardLayout({
   children,
@@ -51,7 +52,7 @@ export default function DashboardLayout({
   );
 
   return (
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-screen w-full bg-gray-900">
         <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-gray-900 text-white border-gray-800 sticky top-0">
             <div className="flex h-16 items-center border-b border-gray-800 px-6">
                 <Link
@@ -75,20 +76,20 @@ export default function DashboardLayout({
             </div>
         </aside>
         <div className="flex flex-1 flex-col">
-            <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:hidden">
+            <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-gray-900/80 backdrop-blur-sm px-4 md:hidden">
             <Sheet>
                 <SheetTrigger asChild>
                 <Button
                     variant="outline"
                     size="icon"
-                    className="shrink-0"
+                    className="shrink-0 bg-transparent border-gray-600 text-white hover:bg-gray-800"
                 >
                     <Menu className="h-5 w-5" />
                     <span className="sr-only">Toggle navigation menu</span>
                 </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="flex flex-col bg-gray-900 text-white border-gray-800">
-                    <div className="flex h-16 items-center border-b border-gray-800 px-6">
+                <SheetContent side="left" className="flex flex-col bg-gray-900 text-white border-gray-800 p-0">
+                    <div className="flex h-16 items-center border-b border-gray-800 px-4">
                         <Link
                         href="/dashboard"
                         className="flex items-center gap-2 font-semibold"
@@ -97,10 +98,10 @@ export default function DashboardLayout({
                         <span className="text-white">AttendAI</span>
                         </Link>
                     </div>
-                    <div className="px-4">
+                    <div className="p-4">
                         <NavLinks />
                     </div>
-                     <div className="mt-auto p-4">
+                     <div className="mt-auto p-4 border-t border-gray-800">
                         <Button variant="ghost" asChild className="w-full justify-start text-gray-400 hover:bg-gray-700 hover:text-white">
                             <Link href="/">
                                 <LogOut className="h-4 w-4 mr-2" />
@@ -110,12 +111,21 @@ export default function DashboardLayout({
                     </div>
                 </SheetContent>
             </Sheet>
-             <div className="flex-1 text-center text-lg font-semibold">
+             <div className="flex-1 text-center text-lg font-semibold text-white">
                 AttendAI
              </div>
             </header>
-            <main className="flex-1">
-                {children}
+            <main className="flex-1 relative">
+                <Image
+                    src="https://images.pexels.com/photos/7640905/pexels-photo-7640905.jpeg"
+                    alt="Background"
+                    fill
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="relative z-10 h-full overflow-y-auto">
+                    {children}
+                </div>
             </main>
         </div>
       </div>

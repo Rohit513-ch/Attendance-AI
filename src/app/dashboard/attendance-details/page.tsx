@@ -40,7 +40,6 @@ import {
 import { cn } from '@/lib/utils';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { AttendanceChart } from '../mark-attendance/attendance-chart';
-import Image from 'next/image';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
@@ -210,184 +209,173 @@ export default function AttendanceDetailsPage() {
   }
 
   return (
-    <div className="relative min-h-screen">
-      <Image
-        src="https://images.pexels.com/photos/7640905/pexels-photo-7640905.jpeg"
-        alt="Background"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-black/50" />
-      <main className="relative flex-1 p-4 md:p-6 lg:p-8">
-        
-          <div className="mx-auto w-full max-w-7xl">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold tracking-tight text-white">
-                Attendance Details
-              </h1>
-              <p className="mt-2 text-sm text-gray-300">
-                View, filter, and export detailed attendance records.
-              </p>
-            </div>
+    <div className="min-h-screen p-4 md:p-6 lg:p-8">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold tracking-tight text-white">
+            Attendance Details
+          </h1>
+          <p className="mt-2 text-sm text-gray-300">
+            View, filter, and export detailed attendance records.
+          </p>
+        </div>
 
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              <div className="lg:col-span-2">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Attendance Records</CardTitle>
-                    <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-                      <div className="relative flex-1">
-                        <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                        <Input 
-                            placeholder="Search by name, roll no..." 
-                            className="pl-10" 
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                        />
-                      </div>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            id="date"
-                            variant={"outline"}
-                            className={cn(
-                              "w-full sm:w-[240px] justify-start text-left font-normal",
-                              !date && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {date ? (
-                              format(date, "LLL dd, y")
-                            ) : (
-                              <span>Pick a date</span>
-                            )}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={date}
-                            onSelect={setDate}
-                            initialFocus
-                          />
-                        </PopoverContent>
-                      </Popover>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="outline" className="w-full sm:w-auto">
-                            {selectedClass}
-                            <ChevronDown className="ml-2 h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem onSelect={() => setSelectedClass('All')}>All</DropdownMenuItem>
-                          <DropdownMenuItem onSelect={() => setSelectedClass('CSE-A')}>CSE-A</DropdownMenuItem>
-                          <DropdownMenuItem onSelect={() => setSelectedClass('CSE-B')}>CSE-B</DropdownMenuItem>
-                          <DropdownMenuItem onSelect={() => setSelectedClass('ECE-A')}>ECE-A</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                            <Button className="w-full sm:w-auto">
-                                <Download className="mr-2 h-4 w-4" />
-                                Download
-                                <ChevronDown className="ml-2 h-4 w-4" />
-                            </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                            <DropdownMenuItem onSelect={handleDownloadPdf}>Download as PDF</DropdownMenuItem>
-                            <DropdownMenuItem onSelect={handleDownloadExcel}>Download as Excel</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <Table>
-                      <TableHeader>
-                        <TableRow>
-                          <TableHead>Student</TableHead>
-                          <TableHead>Roll No.</TableHead>
-                          <TableHead>Department</TableHead>
-                          <TableHead>Class</TableHead>
-                          <TableHead>Date</TableHead>
-                          <TableHead>Time</TableHead>
-                          <TableHead>Status</TableHead>
-                          <TableHead>Confidence</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {filteredRecords.map((record, index) => (
-                          <TableRow key={index}>
-                            <TableCell>
-                              <div className="flex items-center gap-3">
-                                <Avatar>
-                                  <AvatarImage src={record.photo} alt={record.name} data-ai-hint="person" />
-                                  <AvatarFallback>{record.name.charAt(0)}</AvatarFallback>
-                                </Avatar>
-                                <span className="font-medium">{record.name}</span>
-                              </div>
-                            </TableCell>
-                            <TableCell>{record.studentId}</TableCell>
-                            <TableCell>{record.department}</TableCell>
-                            <TableCell>{record.class}</TableCell>
-                            <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
-                            <TableCell>{record.time}</TableCell>
-                            <TableCell>{getStatusBadge(record.status)}</TableCell>
-                            <TableCell>{record.confidence}</TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </CardContent>
-                  <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
-                    <p className="text-sm text-muted-foreground">
-                      Showing <strong>1-{filteredRecords.length}</strong> of <strong>{filteredRecords.length}</strong> records
-                    </p>
-                    <div className="flex gap-2">
-                      <Button variant="outline" size="sm" disabled>Previous</Button>
-                      <Button variant="outline" size="sm">Next</Button>
-                    </div>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <CardHeader>
+                <CardTitle>Attendance Records</CardTitle>
+                <div className="mt-4 flex flex-col gap-4 sm:flex-row">
+                  <div className="relative flex-1">
+                    <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                    <Input 
+                        placeholder="Search by name, roll no..." 
+                        className="pl-10 bg-transparent placeholder:text-gray-400" 
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
                   </div>
-                </Card>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button
+                        id="date"
+                        variant={"outline"}
+                        className={cn(
+                          "w-full sm:w-[240px] justify-start text-left font-normal bg-transparent hover:bg-white/20 hover:text-white",
+                          !date && "text-muted-foreground"
+                        )}
+                      >
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {date ? (
+                          format(date, "LLL dd, y")
+                        ) : (
+                          <span>Pick a date</span>
+                        )}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={date}
+                        onSelect={setDate}
+                        initialFocus
+                      />
+                    </PopoverContent>
+                  </Popover>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button variant="outline" className="w-full sm:w-auto bg-transparent hover:bg-white/20 hover:text-white">
+                        {selectedClass}
+                        <ChevronDown className="ml-2 h-4 w-4" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      <DropdownMenuItem onSelect={() => setSelectedClass('All')}>All</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedClass('CSE-A')}>CSE-A</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedClass('CSE-B')}>CSE-B</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedClass('ECE-A')}>ECE-A</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                        <Button className="w-full sm:w-auto">
+                            <Download className="mr-2 h-4 w-4" />
+                            Download
+                            <ChevronDown className="ml-2 h-4 w-4" />
+                        </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                        <DropdownMenuItem onSelect={handleDownloadPdf}>Download as PDF</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={handleDownloadExcel}>Download as Excel</DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow className="hover:bg-white/10 border-white/20">
+                      <TableHead className="text-white">Student</TableHead>
+                      <TableHead className="text-white">Roll No.</TableHead>
+                      <TableHead className="text-white">Department</TableHead>
+                      <TableHead className="text-white">Class</TableHead>
+                      <TableHead className="text-white">Date</TableHead>
+                      <TableHead className="text-white">Time</TableHead>
+                      <TableHead className="text-white">Status</TableHead>
+                      <TableHead className="text-white">Confidence</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {filteredRecords.map((record, index) => (
+                      <TableRow key={index} className="hover:bg-white/10 border-white/20">
+                        <TableCell>
+                          <div className="flex items-center gap-3">
+                            <Avatar>
+                              <AvatarImage src={record.photo} alt={record.name} data-ai-hint="person" />
+                              <AvatarFallback>{record.name.charAt(0)}</AvatarFallback>
+                            </Avatar>
+                            <span className="font-medium">{record.name}</span>
+                          </div>
+                        </TableCell>
+                        <TableCell>{record.studentId}</TableCell>
+                        <TableCell>{record.department}</TableCell>
+                        <TableCell>{record.class}</TableCell>
+                        <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
+                        <TableCell>{record.time}</TableCell>
+                        <TableCell>{getStatusBadge(record.status)}</TableCell>
+                        <TableCell>{record.confidence}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+              <div className="flex items-center justify-between border-t p-4 border-white/20">
+                <p className="text-sm text-gray-300">
+                  Showing <strong>1-{filteredRecords.length}</strong> of <strong>{filteredRecords.length}</strong> records
+                </p>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" disabled className="bg-transparent hover:bg-white/20 hover:text-white">Previous</Button>
+                  <Button variant="outline" size="sm" className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
+                </div>
               </div>
-              <div className="space-y-8">
-                <Card>
-                  <CardHeader className="flex flex-row items-center space-x-2">
-                    <BarChart2 className="w-6 h-6 text-primary" />
-                    <CardTitle>Analytics</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <AttendanceChart />
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Summary</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Total Students</span>
-                      <span className="font-bold">30</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Present</span>
-                      <span className="font-bold text-green-600">25</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Absent</span>
-                      <span className="font-bold text-red-600">3</span>
-                    </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-muted-foreground">Late</span>
-                      <span className="font-bold text-yellow-600">2</span>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+            </Card>
           </div>
-        
-      </main>
+          <div className="space-y-8">
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <CardHeader className="flex flex-row items-center space-x-2">
+                <BarChart2 className="w-6 h-6 text-primary" />
+                <CardTitle>Analytics</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <AttendanceChart />
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
+              <CardHeader>
+                <CardTitle>Summary</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Total Students</span>
+                  <span className="font-bold">30</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Present</span>
+                  <span className="font-bold text-green-400">25</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Absent</span>
+                  <span className="font-bold text-red-400">3</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-gray-300">Late</span>
+                  <span className="font-bold text-yellow-400">2</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

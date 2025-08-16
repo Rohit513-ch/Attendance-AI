@@ -33,10 +33,10 @@ export default function DashboardPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-4 p-4 md:gap-8 md:p-6 text-white">
       <div className="text-center space-y-4 mb-8">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-gray-800 dark:text-gray-200 font-slab">
-            AI-Powered <span className="text-gray-800 dark:text-gray-200">Face Recognition Attendance</span>
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-white font-slab">
+            AI-Powered <span className="text-gray-200">Face Recognition Attendance</span>
         </h1>
-        <p className="text-gray-500 md:text-xl">
+        <p className="text-gray-300 md:text-xl">
             Register students, manage attendance, and integrate AI for seamless recognition.
         </p>
       </div>
@@ -44,10 +44,10 @@ export default function DashboardPage() {
       <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2">
         {actions.map((action) => (
             <Link href={action.href} key={action.label}>
-                <Card className="bg-gray-800 border-gray-800 hover:bg-gray-700 transition-colors">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20 transition-colors">
                     <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
                         <action.icon className="h-10 w-10 text-yellow-400" />
-                        <p className="font-medium text-gray-400">{action.label}</p>
+                        <p className="font-medium text-gray-300">{action.label}</p>
                     </CardContent>
                 </Card>
             </Link>

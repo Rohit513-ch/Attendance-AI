@@ -29,7 +29,6 @@ import {
   Trash2,
   Clock,
 } from 'lucide-react';
-import Image from 'next/image';
 import {
   AlertDialog,
   AlertDialogContent,
@@ -211,166 +210,155 @@ export default function ViewAuthorizeStudentsPage() {
   }
 
   return (
-    <div className="relative min-h-screen">
-      <Image
-        src="https://images.pexels.com/photos/7640905/pexels-photo-7640905.jpeg"
-        alt="Background"
-        fill
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-black/50" />
-      <main className="relative flex-1 p-4 md:p-6 lg:p-8">
-        
-          <div className="mx-auto w-full max-w-7xl">
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold tracking-tight text-white">
-                View & Authorize Students
-              </h1>
-              <p className="mt-2 text-sm text-gray-300">
-                Manage student registrations, authorize accounts, and update
-                records.
-              </p>
-            </div>
+    <div className="min-h-screen p-4 md:p-6 lg:p-8">
+      <div className="mx-auto w-full max-w-7xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold tracking-tight text-white">
+            View & Authorize Students
+          </h1>
+          <p className="mt-2 text-sm text-gray-300">
+            Manage student registrations, authorize accounts, and update
+            records.
+          </p>
+        </div>
 
-            <div className="rounded-lg border bg-card text-card-foreground shadow-lg">
-              <div className="flex flex-col gap-4 border-b p-4 dark:border-gray-800 md:flex-row md:items-center">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                  <Input
-                    placeholder="Search by name, roll no..."
-                    className="pl-10"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
-                </div>
-                <div className="flex gap-2">
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="flex-1 md:flex-none">
-                        {selectedDepartment}
-                        <ChevronDown className="ml-2 h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('All')}>All</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE')}>CSE</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('ECE')}>ECE</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('IT')}>IT</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('Mechanical')}>Mechanical</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button variant="outline" className="flex-1 md:flex-none">
-                        {selectedStatus}
-                        <ChevronDown className="ml-2 h-4 w-4" />
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem onSelect={() => setSelectedStatus('All')}>All</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedStatus('Pending')}>Pending</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedStatus('Authorized')}>Authorized</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedStatus('Rejected')}>Rejected</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </div>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Student</TableHead>
-                    <TableHead>Roll No.</TableHead>
-                    <TableHead>Class</TableHead>
-                    <TableHead>Department</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filteredStudents.map((student) => (
-                    <TableRow key={student.id}>
-                      <TableCell>
-                        <div className="flex items-center gap-3">
-                          <Avatar>
-                            <AvatarImage
-                              src={student.photo}
-                              alt={student.name}
-                              data-ai-hint="person"
-                            />
-                            <AvatarFallback>
-                              {student.name.charAt(0)}
-                            </AvatarFallback>
-                          </Avatar>
-                          <span className="font-medium">{student.name}</span>
-                        </div>
-                      </TableCell>
-                      <TableCell>{student.rollNo}</TableCell>
-                      <TableCell>{student.class}</TableCell>
-                      <TableCell>{student.department}</TableCell>
-                      <TableCell>{student.email}</TableCell>
-                      <TableCell>{getStatusBadge(student.status)}</TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
-                          {student.status === 'Pending' && (
-                            <>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8 text-green-600 hover:text-green-700"
-                                onClick={() => handleStatusChange(student.id, 'Authorized')}
-                              >
-                                <CheckCircle className="h-4 w-4" />
-                                <span className="sr-only">Authorize</span>
-                              </Button>
-                              <Button
-                                variant="ghost"
-                                size="icon"
-                                className="h-8 w-8 text-red-600 hover:text-red-700"
-                                onClick={() => handleStatusChange(student.id, 'Rejected')}
-                              >
-                                <XCircle className="h-4 w-4" />
-                                <span className="sr-only">Reject</span>
-                              </Button>
-                            </>
-                          )}
-                          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleEdit(student)}>
-                            <Pencil className="h-4 w-4" />
-                            <span className="sr-only">Edit</span>
+        <div className="rounded-lg border bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg">
+          <div className="flex flex-col gap-4 border-b p-4 border-white/20 md:flex-row md:items-center">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search by name, roll no..."
+                className="pl-10 bg-transparent placeholder:text-gray-400"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+            <div className="flex gap-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex-1 md:flex-none bg-transparent hover:bg-white/20 hover:text-white">
+                    {selectedDepartment}
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onSelect={() => setSelectedDepartment('All')}>All</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE')}>CSE</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedDepartment('ECE')}>ECE</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedDepartment('IT')}>IT</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedDepartment('Mechanical')}>Mechanical</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="outline" className="flex-1 md:flex-none bg-transparent hover:bg-white/20 hover:text-white">
+                    {selectedStatus}
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem onSelect={() => setSelectedStatus('All')}>All</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedStatus('Pending')}>Pending</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedStatus('Authorized')}>Authorized</DropdownMenuItem>
+                  <DropdownMenuItem onSelect={() => setSelectedStatus('Rejected')}>Rejected</DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
+          </div>
+          <Table>
+            <TableHeader>
+              <TableRow className="hover:bg-white/10 border-b-white/20">
+                <TableHead className="text-white">Student</TableHead>
+                <TableHead className="text-white">Roll No.</TableHead>
+                <TableHead className="text-white">Class</TableHead>
+                <TableHead className="text-white">Department</TableHead>
+                <TableHead className="text-white">Email</TableHead>
+                <TableHead className="text-white">Status</TableHead>
+                <TableHead className="text-right text-white">Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {filteredStudents.map((student) => (
+                <TableRow key={student.id} className="hover:bg-white/10 border-b-0">
+                  <TableCell>
+                    <div className="flex items-center gap-3">
+                      <Avatar>
+                        <AvatarImage
+                          src={student.photo}
+                          alt={student.name}
+                          data-ai-hint="person"
+                        />
+                        <AvatarFallback>
+                          {student.name.charAt(0)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="font-medium">{student.name}</span>
+                    </div>
+                  </TableCell>
+                  <TableCell>{student.rollNo}</TableCell>
+                  <TableCell>{student.class}</TableCell>
+                  <TableCell>{student.department}</TableCell>
+                  <TableCell>{student.email}</TableCell>
+                  <TableCell>{getStatusBadge(student.status)}</TableCell>
+                  <TableCell className="text-right">
+                    <div className="flex justify-end gap-2">
+                      {student.status === 'Pending' && (
+                        <>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-green-400 hover:text-green-300"
+                            onClick={() => handleStatusChange(student.id, 'Authorized')}
+                          >
+                            <CheckCircle className="h-4 w-4" />
+                            <span className="sr-only">Authorize</span>
                           </Button>
                           <Button
                             variant="ghost"
                             size="icon"
-                            className="h-8 w-8 text-red-600 hover:text-red-700"
-                            onClick={() => handleDelete(student.id)}
+                            className="h-8 w-8 text-red-400 hover:text-red-300"
+                            onClick={() => handleStatusChange(student.id, 'Rejected')}
                           >
-                            <Trash2 className="h-4 w-4" />
-                            <span className="sr-only">Delete</span>
+                            <XCircle className="h-4 w-4" />
+                            <span className="sr-only">Reject</span>
                           </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-              <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
-                <p className="text-sm text-muted-foreground">
-                  Showing <strong>1-{filteredStudents.length}</strong> of{' '}
-                  <strong>{filteredStudents.length}</strong> students
-                </p>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" disabled>
-                    Previous
-                  </Button>
-                  <Button variant="outline" size="sm">
-                    Next
-                  </Button>
-                </div>
-              </div>
+                        </>
+                      )}
+                      <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-gray-300" onClick={() => handleEdit(student)}>
+                        <Pencil className="h-4 w-4" />
+                        <span className="sr-only">Edit</span>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8 text-red-400 hover:text-red-300"
+                        onClick={() => handleDelete(student.id)}
+                      >
+                        <Trash2 className="h-4 w-4" />
+                        <span className="sr-only">Delete</span>
+                      </Button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <div className="flex items-center justify-between border-t p-4 border-white/20">
+            <p className="text-sm text-gray-300">
+              Showing <strong>1-{filteredStudents.length}</strong> of{' '}
+              <strong>{filteredStudents.length}</strong> students
+            </p>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" disabled className="bg-transparent hover:bg-white/20 hover:text-white">
+                Previous
+              </Button>
+              <Button variant="outline" size="sm" className="bg-transparent hover:bg-white/20 hover:text-white">
+                Next
+              </Button>
             </div>
           </div>
-        
-      </main>
+        </div>
+      </div>
       
       {editingStudent && (
         <AlertDialog open={!!editingStudent} onOpenChange={() => setEditingStudent(null)}>
