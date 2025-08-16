@@ -18,7 +18,6 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import {
@@ -180,14 +179,6 @@ export default function ViewAuthorizeStudentsPage() {
             </div>
 
             <div className="flex items-center justify-between p-4">
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm">
-                  Authorize Selected
-                </Button>
-                <Button variant="destructive" size="sm">
-                  Reject Selected
-                </Button>
-              </div>
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 1-5 of {students.length} students
               </div>
@@ -196,9 +187,6 @@ export default function ViewAuthorizeStudentsPage() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-12">
-                    <Checkbox />
-                  </TableHead>
                   <TableHead>Student</TableHead>
                   <TableHead>Roll No.</TableHead>
                   <TableHead>Class</TableHead>
@@ -211,9 +199,6 @@ export default function ViewAuthorizeStudentsPage() {
               <TableBody>
                 {students.map((student) => (
                   <TableRow key={student.id}>
-                    <TableCell>
-                      <Checkbox />
-                    </TableCell>
                     <TableCell>
                       <div className="flex items-center gap-3">
                         <Avatar>
