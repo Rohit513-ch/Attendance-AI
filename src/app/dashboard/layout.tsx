@@ -39,7 +39,7 @@ export default function DashboardLayout({
             key={index} 
             variant={pathname === item.href ? 'secondary' : 'ghost'} 
             asChild 
-            className="justify-start"
+            className={`justify-start ${pathname === item.href ? 'bg-gray-700 text-white' : 'text-gray-400 hover:bg-gray-700 hover:text-white'}`}
         >
             <Link href={item.href}>
                 <item.icon className="h-4 w-4 mr-2" />
@@ -52,21 +52,21 @@ export default function DashboardLayout({
 
   return (
       <div className="flex min-h-screen w-full">
-        <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-background">
-            <div className="flex h-16 items-center border-b px-6">
+        <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-gray-900 text-white border-gray-800">
+            <div className="flex h-16 items-center border-b border-gray-800 px-6">
                 <Link
                 href="/dashboard"
                 className="flex items-center gap-2 font-semibold"
                 >
-                <Camera className="h-6 w-6" />
-                <span>AttendAI</span>
+                <Camera className="h-6 w-6 text-yellow-400" />
+                <span className="text-white">AttendAI</span>
                 </Link>
             </div>
-            <div className="flex-1 overflow-auto py-2">
+            <div className="flex-1 overflow-auto py-2 px-4">
                 <NavLinks />
             </div>
             <div className="mt-auto p-4">
-                 <Button variant="ghost" asChild className="w-full justify-start">
+                 <Button variant="ghost" asChild className="w-full justify-start text-gray-400 hover:bg-gray-700 hover:text-white">
                     <Link href="/">
                         <LogOut className="h-4 w-4 mr-2" />
                         Logout
@@ -87,19 +87,21 @@ export default function DashboardLayout({
                     <span className="sr-only">Toggle navigation menu</span>
                 </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="flex flex-col">
-                    <div className="flex h-16 items-center border-b px-6">
+                <SheetContent side="left" className="flex flex-col bg-gray-900 text-white border-gray-800">
+                    <div className="flex h-16 items-center border-b border-gray-800 px-6">
                         <Link
                         href="/dashboard"
                         className="flex items-center gap-2 font-semibold"
                         >
-                        <Camera className="h-6 w-6" />
-                        <span>AttendAI</span>
+                        <Camera className="h-6 w-6 text-yellow-400" />
+                        <span className="text-white">AttendAI</span>
                         </Link>
                     </div>
-                    <NavLinks />
-                     <div className="mt-auto">
-                        <Button variant="ghost" asChild className="w-full justify-start">
+                    <div className="px-4">
+                        <NavLinks />
+                    </div>
+                     <div className="mt-auto p-4">
+                        <Button variant="ghost" asChild className="w-full justify-start text-gray-400 hover:bg-gray-700 hover:text-white">
                             <Link href="/">
                                 <LogOut className="h-4 w-4 mr-2" />
                                 Logout
