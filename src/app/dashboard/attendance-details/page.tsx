@@ -142,6 +142,8 @@ export default function AttendanceDetailsPage() {
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedClass, setSelectedClass] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     setIsClient(true);
@@ -166,6 +168,23 @@ export default function AttendanceDetailsPage() {
         return selectedClass === 'All' || record.class === selectedClass;
       });
   }, [searchTerm, selectedClass, date]);
+  
+  const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
+  const currentRecords = filteredRecords.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePreviousPage = () => {
+    setCurrentPage(prev => (prev > 1 ? prev - 1 : 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
+  };
+
+  const startRecord = (currentPage - 1) * itemsPerPage + 1;
+  const endRecord = Math.min(currentPage * itemsPerPage, filteredRecords.length);
 
 
   const handleDownloadPdf = () => {
@@ -306,7 +325,7 @@ export default function AttendanceDetailsPage() {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {filteredRecords.map((record, index) => (
+                    {currentRecords.map((record, index) => (
                       <TableRow key={index} className="hover:bg-white/10 border-white/20">
                         <TableCell>
                           <div className="flex items-center gap-3">
@@ -331,11 +350,11 @@ export default function AttendanceDetailsPage() {
               </CardContent>
               <div className="flex items-center justify-between border-t p-4 border-white/20">
                 <p className="text-sm text-gray-300">
-                  Showing <strong>1-{filteredRecords.length}</strong> of <strong>{filteredRecords.length}</strong> records
+                  Showing <strong>{startRecord}-{endRecord}</strong> of <strong>{filteredRecords.length}</strong> records
                 </p>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm" disabled className="bg-transparent hover:bg-white/20 hover:text-white">Previous</Button>
-                  <Button variant="outline" size="sm" className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
+                  <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">Previous</Button>
+                  <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
                 </div>
               </div>
             </Card>

@@ -128,6 +128,66 @@ const initialStudents: Student[] = [
     email: 'aditya.sharma@example.com',
     status: 'Rejected',
   },
+  {
+    id: '680',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Ananya Singh',
+    rollNo: '23CSE690',
+    class: 'CSE-C',
+    department: 'CSE',
+    email: 'ananya.singh@example.com',
+    status: 'Pending',
+  },
+  {
+    id: '681',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Aryan Kumar',
+    rollNo: '23CSE691',
+    class: 'CSE-C',
+    department: 'CSE',
+    email: 'aryan.kumar@example.com',
+    status: 'Authorized',
+  },
+   {
+    id: '682',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Ishaan Sharma',
+    rollNo: '23ECE015',
+    class: 'ECE-A',
+    department: 'ECE',
+    email: 'ishaan.sharma@example.com',
+    status: 'Pending',
+  },
+  {
+    id: '683',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Myra Reddy',
+    rollNo: '23IT008',
+    class: 'IT-A',
+    department: 'IT',
+    email: 'myra.reddy@example.com',
+    status: 'Authorized',
+  },
+  {
+    id: '684',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Vihaan Joshi',
+    rollNo: '23MECH040',
+    class: 'MECH-B',
+    department: 'Mechanical',
+    email: 'vihaan.joshi@example.com',
+    status: 'Rejected',
+  },
+  {
+    id: '685',
+    photo: 'https://placehold.co/40x40.png',
+    name: 'Saanvi Gupta',
+    rollNo: '23CSE055',
+    class: 'CSE-B',
+    department: 'CSE',
+    email: 'saanvi.gupta@example.com',
+    status: 'Pending',
+  },
 ];
 
 const getStatusBadge = (status: string) => {
@@ -165,6 +225,8 @@ export default function ViewAuthorizeStudentsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 7;
 
   useEffect(() => {
     setIsClient(true);
@@ -203,6 +265,23 @@ export default function ViewAuthorizeStudentsPage() {
         return selectedStatus === 'All' || student.status === selectedStatus;
       });
   }, [students, searchTerm, selectedDepartment, selectedStatus]);
+
+  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage);
+  const currentStudents = filteredStudents.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+  
+  const handlePreviousPage = () => {
+    setCurrentPage(prev => (prev > 1 ? prev - 1 : 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
+  };
+
+  const startRecord = (currentPage - 1) * itemsPerPage + 1;
+  const endRecord = Math.min(currentPage * itemsPerPage, filteredStudents.length);
 
 
   if (!isClient) {
@@ -278,7 +357,7 @@ export default function ViewAuthorizeStudentsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredStudents.map((student) => (
+              {currentStudents.map((student) => (
                 <TableRow key={student.id} className="hover:bg-white/10 border-b-0">
                   <TableCell>
                     <div className="flex items-center gap-3">
@@ -345,14 +424,14 @@ export default function ViewAuthorizeStudentsPage() {
           </Table>
           <div className="flex items-center justify-between border-t p-4 border-white/20">
             <p className="text-sm text-gray-300">
-              Showing <strong>1-{filteredStudents.length}</strong> of{' '}
+              Showing <strong>{startRecord}-{endRecord}</strong> of{' '}
               <strong>{filteredStudents.length}</strong> students
             </p>
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" disabled className="bg-transparent hover:bg-white/20 hover:text-white">
+              <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">
                 Previous
               </Button>
-              <Button variant="outline" size="sm" className="bg-transparent hover:bg-white/20 hover:text-white">
+              <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage === totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">
                 Next
               </Button>
             </div>
