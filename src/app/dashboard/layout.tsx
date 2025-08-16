@@ -42,10 +42,11 @@ export default function DashboardLayout({
     <SidebarProvider>
       <div className="flex min-h-screen bg-[#111827]">
         <Sidebar>
-          <SidebarHeader>
+          <SidebarHeader className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-bold text-yellow-400">AI Dashboard</h2>
             </div>
+            <SidebarTrigger className="hidden md:flex" />
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
@@ -75,7 +76,7 @@ export default function DashboardLayout({
           </SidebarFooter>
         </Sidebar>
         <SidebarInset>
-          <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-[#111827]/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-[#111827]/60 sm:px-6 md:justify-end">
+          <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-[#111827]/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-[#111827]/60 sm:px-6 md:hidden">
             <SidebarTrigger className="md:hidden text-white"/>
           </header>
           {children}
