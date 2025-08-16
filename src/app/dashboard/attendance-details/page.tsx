@@ -215,6 +215,126 @@ const attendanceRecords = [
         cameraId: 'CAM-03',
         photo: 'https://placehold.co/40x40.png'
     },
+    {
+        date: '2024-05-22',
+        time: '09:01 AM',
+        studentId: '23CSE100',
+        name: 'Alok Kumar Mandal',
+        department: 'CSE',
+        class: 'CSE-A',
+        status: 'Present',
+        confidence: '98%',
+        cameraId: 'CAM-04',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:03 AM',
+        studentId: '23ECE101',
+        name: 'Rakesh Sethi',
+        department: 'ECE',
+        class: 'ECE-B',
+        status: 'Present',
+        confidence: '95%',
+        cameraId: 'CAM-04',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '--',
+        studentId: '23CSE102',
+        name: 'Nityananda Behera',
+        department: 'CSE',
+        class: 'CSE-B',
+        status: 'Absent',
+        confidence: '--',
+        cameraId: '--',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:15 AM',
+        studentId: '23IT103',
+        name: 'Sudhansu Sahoo',
+        department: 'IT',
+        class: 'IT-A',
+        status: 'Late',
+        confidence: '99%',
+        cameraId: 'CAM-04',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:05 AM',
+        studentId: '23MECH104',
+        name: 'Matruprasad Panda',
+        department: 'Mechanical',
+        class: 'MECH-A',
+        status: 'Present',
+        confidence: '97%',
+        cameraId: 'CAM-04',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:06 AM',
+        studentId: '23CSE105',
+        name: 'Soumya Ranjan Behera',
+        department: 'CSE',
+        class: 'CSE-C',
+        status: 'Present',
+        confidence: '96%',
+        cameraId: 'CAM-04',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:00 AM',
+        studentId: '23EEE106',
+        name: 'Jan Mohanty',
+        department: 'EEE',
+        class: 'EEE-A',
+        status: 'Present',
+        confidence: '98%',
+        cameraId: 'CAM-05',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '--',
+        studentId: '23BT107',
+        name: 'Kabir Singh',
+        department: 'BT',
+        class: 'BT-B',
+        status: 'Absent',
+        confidence: '--',
+        cameraId: '--',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:02 AM',
+        studentId: '23CSE-DS108',
+        name: 'Priya Mohapatra',
+        department: 'CSE-DS',
+        class: 'CSE-DS-A',
+        status: 'Present',
+        confidence: '99%',
+        cameraId: 'CAM-05',
+        photo: 'https://placehold.co/40x40.png'
+    },
+    {
+        date: '2024-05-22',
+        time: '09:08 AM',
+        studentId: '23CSE-AIML109',
+        name: 'Ravi Udhury',
+        department: 'CSE-AIML',
+        class: 'CSE-AIML-A',
+        status: 'Present',
+        confidence: '97%',
+        cameraId: 'CAM-05',
+        photo: 'https://placehold.co/40x40.png'
+    }
 ];
 
 const getStatusBadge = (status: string) => {
