@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -112,6 +113,16 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function ViewAuthorizeStudentsPage() {
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  if (!isClient) {
+    return null;
+  }
+  
   return (
     <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-900/50">
       <main className="flex-1 p-4 md:p-6 lg:p-8">
