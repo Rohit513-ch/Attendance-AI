@@ -103,7 +103,7 @@ export function RegistrationForm() {
               </div>
               <div className="col-span-2">
                 <Label>Select Branch <span className="text-red-500">*</span></Label>
-                <div className="flex items-center gap-4 mt-2">
+                <div className="flex flex-wrap items-center gap-4 mt-2">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="cse" />
                     <Label htmlFor="cse">CSE</Label>
@@ -119,6 +119,22 @@ export function RegistrationForm() {
                   <div className="flex items-center space-x-2">
                     <Checkbox id="civil" />
                     <Label htmlFor="civil">Civil</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="eee" />
+                    <Label htmlFor="eee">EEE</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="mech" />
+                    <Label htmlFor="mech">Mech</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="bt" />
+                    <Label htmlFor="bt">BT</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox id="mtech" />
+                    <Label htmlFor="mtech">M.Tech</Label>
                   </div>
                 </div>
               </div>
