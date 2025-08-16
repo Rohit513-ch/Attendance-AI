@@ -87,11 +87,11 @@
     background: linear-gradient(to right, #8e2de2, #4a00e0);
   }
   .boton-elegante {
-    padding: 15px 30px;
+    padding: 10px 20px;
     border: 2px solid #2c2c2c;
     background-color: #1a1a1a;
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 30px;
     transition: all 0.4s ease;
