@@ -67,12 +67,8 @@ export default function DashboardLayout({
           </SidebarContent>
         </Sidebar>
         <div className="flex flex-col flex-1">
-            <header className="sticky top-0 z-40 w-full border-b bg-white">
-                <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-                    <div className="flex gap-6 md:gap-10">
-                        <SidebarTrigger className="md:hidden"/>
-                    </div>
-                </div>
+            <header className="flex h-16 items-center border-b bg-white px-6">
+                <SidebarTrigger className="md:hidden"/>
             </header>
             <main className="flex-1 overflow-y-auto">
                 {children}

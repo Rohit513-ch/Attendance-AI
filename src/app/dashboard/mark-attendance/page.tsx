@@ -18,7 +18,7 @@ export default function MarkAttendancePage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-black/50" />
-      <main className="relative flex-1 py-12">
+      <main className="relative flex-1 p-4 md:p-8">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl text-white">Mark Attendance</h1>
