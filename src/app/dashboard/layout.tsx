@@ -49,7 +49,7 @@ export default function DashboardLayout({
                   <SidebarMenuButton asChild isActive={pathname === item.href}>
                     <Link href={item.href}>
                       <item.icon className="h-4 w-4 text-primary" />
-                      <span className="text-foreground">{item.label}</span>
+                      <span className="text-sidebar-foreground">{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -62,7 +62,7 @@ export default function DashboardLayout({
                     <SidebarMenuButton asChild>
                         <Link href="/">
                             <LogOut className="h-4 w-4" />
-                            <span>Logout</span>
+                            <span className="text-sidebar-foreground">Logout</span>
                         </Link>
                     </SidebarMenuButton>
                 </SidebarMenuItem>
