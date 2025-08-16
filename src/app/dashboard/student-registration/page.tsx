@@ -12,10 +12,8 @@ export default function StudentRegistrationPage() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/50" />
-      <main className="relative flex-1 p-4 md:p-6">
-        <div className="flex justify-center">
+      <main className="relative flex flex-1 items-center justify-center p-4 md:p-6">
           <RegistrationLoader />
-        </div>
       </main>
     </div>
   );
