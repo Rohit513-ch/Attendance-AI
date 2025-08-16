@@ -7,14 +7,13 @@ import { AttendanceChart } from './attendance-chart';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart2, ListChecks } from 'lucide-react';
 
-export default function DemoPage() {
+export default function MarkAttendancePage() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
+    <div className="flex min-h-screen flex-col bg-background text-foreground">
       <main className="flex-1 py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">Live Demo</h1>
+            <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">Mark Attendance</h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
               Experience the power of AttendAI. Upload a student photo and a reference photo to see our AI in action.
             </p>
@@ -47,7 +46,6 @@ export default function DemoPage() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 }

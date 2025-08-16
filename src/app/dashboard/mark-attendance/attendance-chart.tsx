@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -12,7 +13,7 @@ const chartData = [
 
 export function AttendanceChart() {
     return (
-        <div className="w-full h-[300px]">
+        <div className="w-full h-[300px] text-black">
             <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={chartData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />

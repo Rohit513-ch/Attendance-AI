@@ -9,27 +9,27 @@ import Link from 'next/link';
 export default function DashboardPage() {
   const actions = [
     {
-      href: '#',
+      href: '/dashboard/student-registration',
       icon: UserPlus,
       label: 'Register Students',
     },
     {
-      href: '#',
+      href: '/dashboard/view-authorize-students',
       icon: Users,
       label: 'Authorize Students',
     },
     {
-      href: '/demo',
+      href: '/dashboard/mark-attendance',
       icon: Camera,
       label: 'Mark Attendance',
     },
      {
-      href: '#',
+      href: '/dashboard/attendance-details',
       icon: ListChecks,
       label: 'View Attendance',
     },
     {
-      href: '#',
+      href: '/dashboard/camera-configuration',
       icon: Settings,
       label: 'Configure Camera',
     },
@@ -38,8 +38,8 @@ export default function DashboardPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-4 p-4 md:gap-8 md:p-6 text-white">
       <div className="text-center space-y-4 mb-8">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-black">
-            <span className="text-yellow-400">AI-Powered</span> Face Recognition Attendance
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-yellow-400">
+            AI-Powered <span className="text-white">Face Recognition Attendance</span>
         </h1>
         <p className="text-gray-400 md:text-xl">
             Register students, manage attendance, and integrate AI for seamless recognition.

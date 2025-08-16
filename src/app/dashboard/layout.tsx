@@ -3,6 +3,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   SidebarProvider,
   Sidebar,
@@ -30,12 +31,13 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const pathname = usePathname();
   const navItems = [
-    { href: '#', icon: UserPlus, label: 'Student Registration' },
-    { href: '#', icon: Users, label: 'View / Authorize Students' },
-    { href: '/demo', icon: Camera, label: 'Mark Attendance' },
-    { href: '#', icon: ListChecks, label: 'Attendance Details' },
-    { href: '#', icon: Settings, label: 'Camera Configuration' },
+    { href: '/dashboard/student-registration', icon: UserPlus, label: 'Student Registration' },
+    { href: '/dashboard/view-authorize-students', icon: Users, label: 'View / Authorize Students' },
+    { href: '/dashboard/mark-attendance', icon: Camera, label: 'Mark Attendance' },
+    { href: '/dashboard/attendance-details', icon: ListChecks, label: 'Attendance Details' },
+    { href: '/dashboard/camera-configuration', icon: Settings, label: 'Camera Configuration' },
   ];
 
   return (
@@ -51,7 +53,7 @@ export default function DashboardLayout({
             <SidebarMenu>
               {navItems.map((item, index) => (
                 <SidebarMenuItem key={index}>
-                  <SidebarMenuButton asChild isActive={item.href === '/demo'}>
+                  <SidebarMenuButton asChild isActive={pathname === item.href}>
                     <Link href={item.href}>
                       <item.icon className="h-4 w-4 text-yellow-400" />
                       <span>{item.label}</span>
