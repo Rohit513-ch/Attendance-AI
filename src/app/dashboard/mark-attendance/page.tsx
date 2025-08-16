@@ -15,7 +15,7 @@ export default function MarkAttendancePage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">Mark Attendance</h1>
             <p className="mt-4 max-w-2xl mx-auto text-muted-foreground md:text-xl">
-              Experience the power of AttendAI. Upload a student photo and a reference photo to see our AI in action.
+              Use the live camera feed to verify student attendance with AI.
             </p>
           </div>
           
@@ -26,20 +26,20 @@ export default function MarkAttendancePage() {
             <div className="lg:col-span-3 space-y-8">
               <Card>
                 <CardHeader className="flex flex-row items-center space-x-2">
-                  <BarChart2 className="w-6 h-6 text-primary" />
-                  <CardTitle className="font-headline">Attendance Analytics</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <AttendanceChart />
-                </CardContent>
-              </Card>
-              <Card>
-                <CardHeader className="flex flex-row items-center space-x-2">
                   <ListChecks className="w-6 h-6 text-primary" />
                   <CardTitle className="font-headline">Today's Attendance Log</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <AttendanceTable />
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader className="flex flex-row items-center space-x-2">
+                  <BarChart2 className="w-6 h-6 text-primary" />
+                  <CardTitle className="font-headline">Attendance Analytics</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <AttendanceChart />
                 </CardContent>
               </Card>
             </div>
