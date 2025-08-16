@@ -371,7 +371,7 @@ export default function AttendanceDetailsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 50;
 
   useEffect(() => {
     setIsClient(true);
