@@ -42,6 +42,11 @@ import { cn } from '@/lib/utils';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { AttendanceChart } from '../mark-attendance/attendance-chart';
 import Image from 'next/image';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import * as XLSX from 'xlsx';
+import type { RowInput } from 'jspdf-autotable';
+
 
 const attendanceRecords = [
   {
@@ -135,6 +140,39 @@ export default function AttendanceDetailsPage() {
     setIsClient(true);
   }, []);
 
+  const handleDownloadPdf = () => {
+    const doc = new jsPDF();
+    doc.text('Attendance Records', 14, 16);
+    (doc as any).autoTable({
+      startY: 20,
+      head: [['Student', 'Roll No.', 'Date', 'Time', 'Status', 'Confidence']],
+      body: attendanceRecords.map(record => [
+        record.name,
+        record.studentId,
+        format(new Date(record.date), 'dd MMM, yyyy'),
+        record.time,
+        record.status,
+        record.confidence
+      ]) as RowInput[],
+    });
+    doc.save('attendance-records.pdf');
+  };
+
+  const handleDownloadExcel = () => {
+    const worksheet = XLSX.utils.json_to_sheet(attendanceRecords.map(record => ({
+      'Student': record.name,
+      'Roll No.': record.studentId,
+      'Date': format(new Date(record.date), 'dd MMM, yyyy'),
+      'Time': record.time,
+      'Status': record.status,
+      'Confidence': record.confidence
+    })));
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Attendance');
+    XLSX.writeFile(workbook, 'attendance-records.xlsx');
+  };
+
+
   return (
     <div className="relative min-h-screen">
       <Image
@@ -225,8 +263,8 @@ export default function AttendanceDetailsPage() {
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuItem>Download as PDF</DropdownMenuItem>
-                            <DropdownMenuItem>Download as Excel</DropdownMenuItem>
+                            <DropdownMenuItem onSelect={handleDownloadPdf}>Download as PDF</DropdownMenuItem>
+                            <DropdownMenuItem onSelect={handleDownloadExcel}>Download as Excel</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                     </div>
