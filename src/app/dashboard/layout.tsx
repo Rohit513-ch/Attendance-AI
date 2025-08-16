@@ -51,53 +51,71 @@ export default function DashboardLayout({
   );
 
   return (
-      <div className="flex min-h-screen w-full flex-col">
-        <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
-          <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-            <Link
-              href="/dashboard"
-              className="flex items-center gap-2 text-lg font-semibold md:text-base"
-            >
-              <Camera className="h-6 w-6" />
-              <span className="sr-only">AttendAI</span>
-            </Link>
-            {navItems.map(item => (
+      <div className="flex min-h-screen w-full">
+        <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-background">
+            <div className="flex h-16 items-center border-b px-6">
                 <Link
-                    key={item.label}
-                    href={item.href}
-                    className={`transition-colors hover:text-foreground ${pathname === item.href ? 'text-foreground' : 'text-muted-foreground'}`}
+                href="/dashboard"
+                className="flex items-center gap-2 font-semibold"
                 >
-                    {item.label}
+                <Camera className="h-6 w-6" />
+                <span>AttendAI</span>
                 </Link>
-            ))}
-          </nav>
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="shrink-0 md:hidden"
-              >
-                <Menu className="h-5 w-5" />
-                <span className="sr-only">Toggle navigation menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="left">
+            </div>
+            <div className="flex-1 overflow-auto py-2">
                 <NavLinks />
-            </SheetContent>
-          </Sheet>
-          <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 justify-end">
-            <Button variant="ghost" asChild>
-                <Link href="/">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                </Link>
-            </Button>
-          </div>
-        </header>
-        <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-          {children}
-        </main>
+            </div>
+            <div className="mt-auto p-4">
+                 <Button variant="ghost" asChild className="w-full justify-start">
+                    <Link href="/">
+                        <LogOut className="h-4 w-4 mr-2" />
+                        Logout
+                    </Link>
+                </Button>
+            </div>
+        </aside>
+        <div className="flex flex-1 flex-col">
+            <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background px-4 md:hidden">
+            <Sheet>
+                <SheetTrigger asChild>
+                <Button
+                    variant="outline"
+                    size="icon"
+                    className="shrink-0"
+                >
+                    <Menu className="h-5 w-5" />
+                    <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="flex flex-col">
+                    <div className="flex h-16 items-center border-b px-6">
+                        <Link
+                        href="/dashboard"
+                        className="flex items-center gap-2 font-semibold"
+                        >
+                        <Camera className="h-6 w-6" />
+                        <span>AttendAI</span>
+                        </Link>
+                    </div>
+                    <NavLinks />
+                     <div className="mt-auto">
+                        <Button variant="ghost" asChild className="w-full justify-start">
+                            <Link href="/">
+                                <LogOut className="h-4 w-4 mr-2" />
+                                Logout
+                            </Link>
+                        </Button>
+                    </div>
+                </SheetContent>
+            </Sheet>
+             <div className="flex-1 text-center text-lg font-semibold">
+                AttendAI
+             </div>
+            </header>
+            <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+            {children}
+            </main>
+        </div>
       </div>
   );
 }
