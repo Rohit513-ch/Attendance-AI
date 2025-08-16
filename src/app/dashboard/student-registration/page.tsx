@@ -3,7 +3,7 @@ import { RegistrationLoader } from './registration-loader';
 
 export default function StudentRegistrationPage() {
   return (
-    <main className="flex-1 p-4 md:p-6">
+    <main className="flex-1 p-4 md:p-6 bg-blue-950">
       <div className="flex justify-center">
         <RegistrationLoader />
       </div>
