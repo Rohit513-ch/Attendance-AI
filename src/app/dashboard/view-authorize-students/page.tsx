@@ -30,8 +30,16 @@ import {
   Clock,
 } from 'lucide-react';
 import Image from 'next/image';
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogCancel,
+} from '@/components/ui/alert-dialog';
+import { EditStudentForm, Student } from './edit-student-form';
 
-const initialStudents = [
+const initialStudents: Student[] = [
   {
     id: '1',
     photo: 'https://placehold.co/40x40.png',
@@ -115,6 +123,7 @@ const getStatusBadge = (status: string) => {
 export default function ViewAuthorizeStudentsPage() {
   const [isClient, setIsClient] = useState(false);
   const [students, setStudents] = useState(initialStudents);
+  const [editingStudent, setEditingStudent] = useState<Student | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -126,7 +135,16 @@ export default function ViewAuthorizeStudentsPage() {
 
   const handleDelete = (id: string) => {
     setStudents(students.filter(student => student.id !== id));
-  }
+  };
+
+  const handleEdit = (student: Student) => {
+    setEditingStudent(student);
+  };
+
+  const handleUpdate = (updatedStudent: Student) => {
+    setStudents(students.map(student => (student.id === updatedStudent.id ? updatedStudent : student)));
+    setEditingStudent(null);
+  };
 
   return (
     <div className="relative min-h-screen">
@@ -250,7 +268,7 @@ export default function ViewAuthorizeStudentsPage() {
                               </Button>
                             </>
                           )}
-                          <Button variant="ghost" size="icon" className="h-8 w-8">
+                          <Button variant="ghost" size="icon" className="h-8 w-8" onClick={() => handleEdit(student)}>
                             <Pencil className="h-4 w-4" />
                             <span className="sr-only">Edit</span>
                           </Button>
@@ -287,7 +305,21 @@ export default function ViewAuthorizeStudentsPage() {
           </div>
         )}
       </main>
+      
+      {editingStudent && (
+        <AlertDialog open={!!editingStudent} onOpenChange={() => setEditingStudent(null)}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Edit Student Details</AlertDialogTitle>
+            </AlertDialogHeader>
+            <EditStudentForm
+              student={editingStudent}
+              onUpdate={handleUpdate}
+              onCancel={() => setEditingStudent(null)}
+            />
+          </AlertDialogContent>
+        </AlertDialog>
+      )}
     </div>
   );
 }
-
