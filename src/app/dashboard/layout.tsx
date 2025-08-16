@@ -21,7 +21,9 @@ import {
   Camera,
   ListChecks,
   LogOut,
+  Menu,
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 export default function DashboardLayout({
   children,
@@ -38,7 +40,7 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-blue-950">
+      <div className="flex min-h-screen bg-background">
         <Sidebar>
           <SidebarContent>
             <SidebarMenu>
@@ -46,8 +48,8 @@ export default function DashboardLayout({
                 <SidebarMenuItem key={index}>
                   <SidebarMenuButton asChild isActive={pathname === item.href}>
                     <Link href={item.href}>
-                      <item.icon className="h-4 w-4 text-yellow-400" />
-                      <span>{item.label}</span>
+                      <item.icon className="h-4 w-4 text-primary" />
+                      <span className="text-foreground">{item.label}</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -68,7 +70,12 @@ export default function DashboardLayout({
           </SidebarFooter>
         </Sidebar>
         <main className="flex-1 flex flex-col">
-          <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-blue-950/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-blue-950/60 sm:px-6">
+          <header className="sticky top-0 z-40 w-full border-b bg-white">
+            <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+              <div className="flex gap-6 md:gap-10">
+                 <SidebarTrigger className="md:hidden"/>
+              </div>
+            </div>
           </header>
           <div className="flex-1 overflow-y-auto">
             {children}
