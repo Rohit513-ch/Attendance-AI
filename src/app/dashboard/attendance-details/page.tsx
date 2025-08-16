@@ -410,6 +410,13 @@ export default function AttendanceDetailsPage() {
       );
   },[filteredRecords, currentPage, itemsPerPage]);
 
+  const summary = useMemo(() => {
+    const present = filteredRecords.filter(r => r.status === 'Present' || r.status === 'Late').length;
+    const absent = filteredRecords.filter(r => r.status === 'Absent').length;
+    const total = filteredRecords.length;
+    return { present, absent, total };
+  }, [filteredRecords]);
+
   const handlePreviousPage = () => {
     setCurrentPage(prev => (prev > 1 ? prev - 1 : 1));
   };
@@ -533,7 +540,7 @@ export default function AttendanceDetailsPage() {
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE')}>CSE</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-AIML')}>CSE-AIML</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-DS')}>CSE-DS</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedDepartment('Mech')}>Mech</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('Mechanical')}>Mechanical</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('EEE')}>EEE</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('ECE')}>ECE</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('BT')}>BT</DropdownMenuItem>
@@ -628,15 +635,15 @@ export default function AttendanceDetailsPage() {
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Total Students</span>
-                  <span className="font-bold">30</span>
+                  <span className="font-bold">{summary.total}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Present</span>
-                  <span className="font-bold text-green-400">25</span>
+                  <span className="font-bold text-green-400">{summary.present}</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-300">Absent</span>
-                  <span className="font-bold text-red-400">3</span>
+                  <span className="font-bold text-red-400">{summary.absent}</span>
                 </div>
               </CardContent>
             </Card>
