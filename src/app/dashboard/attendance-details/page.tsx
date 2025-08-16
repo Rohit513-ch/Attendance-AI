@@ -324,7 +324,7 @@ export default function AttendanceDetailsPage() {
                           !date && "text-muted-foreground"
                         )}
                       >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        <CalendarIcon className="mr-2 h-4 w-4 text-yellow-400" />
                         {date ? (
                           format(date, "LLL dd, y")
                         ) : (
@@ -461,3 +461,4 @@ export default function AttendanceDetailsPage() {
       </div>
     </div>
   );
+}
