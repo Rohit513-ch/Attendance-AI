@@ -9,6 +9,7 @@ const chartData = [
     { name: 'Wed', present: 30, absent: 0 },
     { name: 'Thu', present: 27, absent: 3 },
     { name: 'Fri', present: 25, absent: 5 },
+    { name: 'Sat', present: 22, absent: 8 },
 ];
 
 export function AttendanceChart() {
