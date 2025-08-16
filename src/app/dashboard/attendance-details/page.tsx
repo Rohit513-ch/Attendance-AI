@@ -484,6 +484,14 @@ export default function AttendanceDetailsPage() {
                 <p className="text-sm text-gray-300">
                   Showing <strong>{startRecord}-{endRecord}</strong> of <strong>{filteredRecords.length}</strong> records
                 </p>
+                <div className="flex gap-2">
+                  <button className="boton-elegante" onClick={handlePreviousPage} disabled={currentPage === 1}>
+                    Previous
+                  </button>
+                  <button className="boton-elegante" onClick={handleNextPage} disabled={currentPage >= totalPages}>
+                    Next
+                  </button>
+                </div>
               </div>
             </Card>
           </div>

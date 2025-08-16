@@ -87,3 +87,64 @@
     background: linear-gradient(to right, #8e2de2, #4a00e0);
   }
 }
+
+@layer components {
+  .boton-elegante {
+    padding: 10px 20px;
+    border: 2px solid #2c2c2c;
+    font-size: 16px;
+    color: #e8e8e8;
+    background-color: #1a1a1a;
+    border-radius: 40px;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+    text-shadow: 0 0 10px #ffffff4d;
+    box-shadow: 0 0 10px #ffffff4d;
+  }
+
+  .boton-elegante::before, .boton-elegante::after {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 100%;
+    background-color: #e8e8e8;
+    transition: all .5s;
+    z-index: -1;
+  }
+
+  .boton-elegante::before {
+    top: 0;
+    left: 0;
+    border-radius: 0 40px 40px 0;
+  }
+
+  .boton-elegante::after {
+    top: 0;
+    right: 0;
+    border-radius: 40px 0 0 40px;
+  }
+
+  .boton-elegante:hover {
+    color: #1a1a1a;
+    font-weight: 700;
+    text-shadow: 0 0 0px #ffffff4d;
+    box-shadow: 0 0 0px #ffffff4d;
+  }
+
+  .boton-elegante:hover:disabled {
+    color: #888;
+    cursor: not-allowed;
+  }
+
+  .boton-elegante:hover::before, .boton-elegante:hover::after {
+    width: 50%;
+  }
+
+  .boton-elegante:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
