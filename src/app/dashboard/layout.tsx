@@ -77,7 +77,6 @@ export default function DashboardLayout({
         <SidebarInset>
           <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-[#111827]/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-[#111827]/60 sm:px-6 md:justify-end">
             <SidebarTrigger className="md:hidden text-white"/>
-            <p className='font-bold text-lg md:hidden text-yellow-400'>AI Dashboard</p>
           </header>
           {children}
         </SidebarInset>
