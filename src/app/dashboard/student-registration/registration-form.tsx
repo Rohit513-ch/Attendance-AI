@@ -132,10 +132,6 @@ export function RegistrationForm() {
                     <Checkbox id="bt" />
                     <Label htmlFor="bt">BT</Label>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <Checkbox id="mtech" />
-                    <Label htmlFor="mtech">M.Tech</Label>
-                  </div>
                 </div>
               </div>
               <div className="col-span-2">
