@@ -6,35 +6,35 @@ import { CheckCircle2, XCircle, Clock } from 'lucide-react';
 
 const attendanceData = [
   {
-    name: 'Sophia Davis',
+    name: 'Devi Prasad Mohanty',
     avatar: 'https://placehold.co/40x40.png',
     status: 'Present',
     time: '09:01 AM',
     verified: true,
   },
   {
-    name: 'Liam Martinez',
+    name: 'Pratik Kar',
     avatar: 'https://placehold.co/40x40.png',
     status: 'Present',
     time: '09:02 AM',
     verified: true,
   },
   {
-    name: 'Olivia Brown',
+    name: 'Rohit Pandit',
     avatar: 'https://placehold.co/40x40.png',
     status: 'Absent',
     time: '--',
     verified: false,
   },
   {
-    name: 'Noah Wilson',
+    name: 'Shyam Gupta',
     avatar: 'https://placehold.co/40x40.png',
     status: 'Present',
     time: '08:59 AM',
     verified: true,
   },
   {
-    name: 'Emma Johnson',
+    name: 'Chitranshu Sanket',
     avatar: 'https://placehold.co/40x40.png',
     status: 'Present',
     time: '09:05 AM',
