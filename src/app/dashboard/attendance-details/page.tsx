@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Table,
   TableBody,
@@ -128,6 +128,15 @@ export default function AttendanceDetailsPage() {
     from: addDays(new Date(), -7),
     to: new Date(),
   });
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    return null; // Or a loading spinner
+  }
 
   return (
     <main className="flex-1 p-4 md:p-6 lg:p-8">
