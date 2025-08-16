@@ -68,10 +68,10 @@ export default function DashboardLayout({
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
-        <div className="flex-1 flex flex-col bg-background">
+        <div className="flex-1 flex flex-col bg-blue-950/95">
           <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-blue-950/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-blue-950/60 sm:px-6">
           </header>
-          <SidebarInset>
+          <SidebarInset className="bg-background">
             {children}
           </SidebarInset>
         </div>
