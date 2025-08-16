@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Table,
   TableBody,
@@ -35,7 +35,6 @@ import {
   AlertDialogContent,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogCancel,
 } from '@/components/ui/alert-dialog';
 import { EditStudentForm, Student } from './edit-student-form';
 
@@ -124,6 +123,9 @@ export default function ViewAuthorizeStudentsPage() {
   const [isClient, setIsClient] = useState(false);
   const [students, setStudents] = useState(initialStudents);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDepartment, setSelectedDepartment] = useState('All');
+  const [selectedStatus, setSelectedStatus] = useState('All');
 
   useEffect(() => {
     setIsClient(true);
@@ -145,6 +147,24 @@ export default function ViewAuthorizeStudentsPage() {
     setStudents(students.map(student => (student.id === updatedStudent.id ? updatedStudent : student)));
     setEditingStudent(null);
   };
+  
+  const filteredStudents = useMemo(() => {
+    return students
+      .filter(student => {
+        const searchTermLower = searchTerm.toLowerCase();
+        return (
+          student.name.toLowerCase().includes(searchTermLower) ||
+          student.rollNo.toLowerCase().includes(searchTermLower)
+        );
+      })
+      .filter(student => {
+        return selectedDepartment === 'All' || student.department === selectedDepartment;
+      })
+      .filter(student => {
+        return selectedStatus === 'All' || student.status === selectedStatus;
+      });
+  }, [students, searchTerm, selectedDepartment, selectedStatus]);
+
 
   return (
     <div className="relative min-h-screen">
@@ -175,36 +195,38 @@ export default function ViewAuthorizeStudentsPage() {
                   <Input
                     placeholder="Search by name, roll no..."
                     className="pl-10"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
                 </div>
                 <div className="flex gap-2">
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" className="flex-1 md:flex-none">
-                        Department
+                        {selectedDepartment}
                         <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>All</DropdownMenuItem>
-                      <DropdownMenuItem>CSE</DropdownMenuItem>
-                      <DropdownMenuItem>ECE</DropdownMenuItem>
-                      <DropdownMenuItem>IT</DropdownMenuItem>
-                      <DropdownMenuItem>Mechanical</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('All')}>All</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE')}>CSE</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('ECE')}>ECE</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('IT')}>IT</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('Mechanical')}>Mechanical</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" className="flex-1 md:flex-none">
-                        Status
+                        {selectedStatus}
                         <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem>All</DropdownMenuItem>
-                      <DropdownMenuItem>Pending</DropdownMenuItem>
-                      <DropdownMenuItem>Authorized</DropdownMenuItem>
-                      <DropdownMenuItem>Rejected</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedStatus('All')}>All</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedStatus('Pending')}>Pending</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedStatus('Authorized')}>Authorized</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedStatus('Rejected')}>Rejected</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -222,7 +244,7 @@ export default function ViewAuthorizeStudentsPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {students.map((student) => (
+                  {filteredStudents.map((student) => (
                     <TableRow key={student.id}>
                       <TableCell>
                         <div className="flex items-center gap-3">
@@ -289,8 +311,8 @@ export default function ViewAuthorizeStudentsPage() {
               </Table>
               <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
                 <p className="text-sm text-muted-foreground">
-                  Showing <strong>1-{students.length}</strong> of{' '}
-                  <strong>{students.length}</strong> students
+                  Showing <strong>1-{filteredStudents.length}</strong> of{' '}
+                  <strong>{filteredStudents.length}</strong> students
                 </p>
                 <div className="flex gap-2">
                   <Button variant="outline" size="sm" disabled>
