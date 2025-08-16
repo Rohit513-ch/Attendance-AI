@@ -35,36 +35,36 @@ export function RegistrationForm() {
           <form>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="col-span-2">
-                <Label htmlFor="studentName">Student Name</Label>
-                <Input id="studentName" />
+                <Label htmlFor="studentName">Student Name <span className="text-red-500">*</span></Label>
+                <Input id="studentName" required />
               </div>
               <div>
-                <Label htmlFor="collegeId">CollegeID(Ex: 23CSEDS012)</Label>
-                <Input id="collegeId" />
+                <Label htmlFor="collegeId">CollegeID(Ex: 23CSEDS012) <span className="text-red-500">*</span></Label>
+                <Input id="collegeId" required />
               </div>
               <div>
-                <Label htmlFor="universityId">UniversityID(Ex: 23UGO10978)</Label>
-                <Input id="universityId" />
+                <Label htmlFor="universityId">UniversityID(Ex: 23UGO10978) <span className="text-red-500">*</span></Label>
+                <Input id="universityId" required />
               </div>
               <div>
-                <Label htmlFor="mobileNo">Mobile No.</Label>
-                <Input id="mobileNo" />
+                <Label htmlFor="mobileNo">Mobile No. <span className="text-red-500">*</span></Label>
+                <Input id="mobileNo" required />
               </div>
               <div>
-                <Label htmlFor="emailId">Email Id</Label>
-                <Input id="emailId" type="email" />
+                <Label htmlFor="emailId">Email Id <span className="text-red-500">*</span></Label>
+                <Input id="emailId" type="email" required />
               </div>
               <div>
-                <Label htmlFor="fatherName">Father Name</Label>
-                <Input id="fatherName" />
+                <Label htmlFor="fatherName">Father Name <span className="text-red-500">*</span></Label>
+                <Input id="fatherName" required />
               </div>
               <div>
-                <Label htmlFor="motherName">Mother Name</Label>
-                <Input id="motherName" />
+                <Label htmlFor="motherName">Mother Name <span className="text-red-500">*</span></Label>
+                <Input id="motherName" required />
               </div>
               <div>
-                <Label htmlFor="course">Select Course</Label>
-                <Select>
+                <Label htmlFor="course">Select Course <span className="text-red-500">*</span></Label>
+                <Select required>
                   <SelectTrigger id="course">
                     <SelectValue placeholder="Select..." />
                   </SelectTrigger>
@@ -77,11 +77,11 @@ export function RegistrationForm() {
                 </Select>
               </div>
               <div>
-                <Label htmlFor="dob">Date Of Birth</Label>
-                <Input id="dob" type="date" placeholder="dd-----yyyy" />
+                <Label htmlFor="dob">Date Of Birth <span className="text-red-500">*</span></Label>
+                <Input id="dob" type="date" placeholder="dd-----yyyy" required />
               </div>
               <div>
-                <Label>Gender</Label>
+                <Label>Gender <span className="text-red-500">*</span></Label>
                 <RadioGroup defaultValue="male" className="flex items-center gap-4 mt-2">
                   <div className="flex items-center space-x-2">
                     <RadioGroupItem value="male" id="male" />
@@ -98,11 +98,11 @@ export function RegistrationForm() {
                 </RadioGroup>
               </div>
               <div>
-                <Label htmlFor="studentPhoto">Student Photo</Label>
-                <Input id="studentPhoto" type="file" />
+                <Label htmlFor="studentPhoto">Student Photo <span className="text-red-500">*</span></Label>
+                <Input id="studentPhoto" type="file" required />
               </div>
               <div className="col-span-2">
-                <Label>Select Branch</Label>
+                <Label>Select Branch <span className="text-red-500">*</span></Label>
                 <div className="flex items-center gap-4 mt-2">
                   <div className="flex items-center space-x-2">
                     <Checkbox id="cse" />
@@ -123,8 +123,8 @@ export function RegistrationForm() {
                 </div>
               </div>
               <div className="col-span-2">
-                <Label htmlFor="address">Address</Label>
-                <Textarea id="address" />
+                <Label htmlFor="address">Address <span className="text-red-500">*</span></Label>
+                <Textarea id="address" required />
               </div>
             </div>
           </form>
