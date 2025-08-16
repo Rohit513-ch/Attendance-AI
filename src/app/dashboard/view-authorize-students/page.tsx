@@ -31,7 +31,7 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
-const students = [
+const initialStudents = [
   {
     id: '1',
     photo: 'https://placehold.co/40x40.png',
@@ -114,10 +114,19 @@ const getStatusBadge = (status: string) => {
 
 export default function ViewAuthorizeStudentsPage() {
   const [isClient, setIsClient] = useState(false);
+  const [students, setStudents] = useState(initialStudents);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const handleStatusChange = (id: string, status: 'Authorized' | 'Rejected') => {
+    setStudents(students.map(student => student.id === id ? { ...student, status } : student));
+  };
+
+  const handleDelete = (id: string) => {
+    setStudents(students.filter(student => student.id !== id));
+  }
 
   return (
     <div className="relative min-h-screen">
@@ -225,6 +234,7 @@ export default function ViewAuthorizeStudentsPage() {
                                 variant="ghost"
                                 size="icon"
                                 className="h-8 w-8 text-green-600 hover:text-green-700"
+                                onClick={() => handleStatusChange(student.id, 'Authorized')}
                               >
                                 <CheckCircle className="h-4 w-4" />
                                 <span className="sr-only">Authorize</span>
@@ -233,6 +243,7 @@ export default function ViewAuthorizeStudentsPage() {
                                 variant="ghost"
                                 size="icon"
                                 className="h-8 w-8 text-red-600 hover:text-red-700"
+                                onClick={() => handleStatusChange(student.id, 'Rejected')}
                               >
                                 <XCircle className="h-4 w-4" />
                                 <span className="sr-only">Reject</span>
@@ -247,6 +258,7 @@ export default function ViewAuthorizeStudentsPage() {
                             variant="ghost"
                             size="icon"
                             className="h-8 w-8 text-red-600 hover:text-red-700"
+                            onClick={() => handleDelete(student.id)}
                           >
                             <Trash2 className="h-4 w-4" />
                             <span className="sr-only">Delete</span>
@@ -259,11 +271,11 @@ export default function ViewAuthorizeStudentsPage() {
               </Table>
               <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
                 <p className="text-sm text-muted-foreground">
-                  Showing <strong>1-5</strong> of{' '}
+                  Showing <strong>1-{students.length}</strong> of{' '}
                   <strong>{students.length}</strong> students
                 </p>
                 <div className="flex gap-2">
-                  <Button variant="outline" size="sm">
+                  <Button variant="outline" size="sm" disabled>
                     Previous
                   </Button>
                   <Button variant="outline" size="sm">
@@ -278,3 +290,4 @@ export default function ViewAuthorizeStudentsPage() {
     </div>
   );
 }
+
