@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   Table,
   TableBody,
@@ -145,10 +145,27 @@ export default function AttendanceDetailsPage() {
     to: new Date(),
   });
   const [isClient, setIsClient] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedClass, setSelectedClass] = useState('All');
 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const filteredRecords = useMemo(() => {
+    return attendanceRecords
+      .filter(record => {
+        const searchTermLower = searchTerm.toLowerCase();
+        return (
+          record.name.toLowerCase().includes(searchTermLower) ||
+          record.studentId.toLowerCase().includes(searchTermLower)
+        );
+      })
+      .filter(record => {
+        return selectedClass === 'All' || record.class === selectedClass;
+      });
+  }, [searchTerm, selectedClass]);
+
 
   const handleDownloadPdf = () => {
     const doc = new jsPDF();
@@ -156,7 +173,7 @@ export default function AttendanceDetailsPage() {
     (doc as any).autoTable({
       startY: 20,
       head: [['Student', 'Roll No.', 'Department', 'Class', 'Date', 'Time', 'Status', 'Confidence']],
-      body: attendanceRecords.map(record => [
+      body: filteredRecords.map(record => [
         record.name,
         record.studentId,
         record.department,
@@ -171,7 +188,7 @@ export default function AttendanceDetailsPage() {
   };
 
   const handleDownloadExcel = () => {
-    const worksheet = XLSX.utils.json_to_sheet(attendanceRecords.map(record => ({
+    const worksheet = XLSX.utils.json_to_sheet(filteredRecords.map(record => ({
       'Student': record.name,
       'Roll No.': record.studentId,
       'Department': record.department,
@@ -216,7 +233,12 @@ export default function AttendanceDetailsPage() {
                     <div className="mt-4 flex flex-col gap-4 sm:flex-row">
                       <div className="relative flex-1">
                         <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                        <Input placeholder="Search by name, roll no..." className="pl-10" />
+                        <Input 
+                            placeholder="Search by name, roll no..." 
+                            className="pl-10" 
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
                       </div>
                       <Popover>
                         <PopoverTrigger asChild>
@@ -257,15 +279,15 @@ export default function AttendanceDetailsPage() {
                       <DropdownMenu>
                         <DropdownMenuTrigger asChild>
                           <Button variant="outline" className="w-full sm:w-auto">
-                            Class
+                            {selectedClass}
                             <ChevronDown className="ml-2 h-4 w-4" />
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem>All</DropdownMenuItem>
-                          <DropdownMenuItem>CSE-A</DropdownMenuItem>
-                          <DropdownMenuItem>CSE-B</DropdownMenuItem>
-                          <DropdownMenuItem>ECE-A</DropdownMenuItem>
+                          <DropdownMenuItem onSelect={() => setSelectedClass('All')}>All</DropdownMenuItem>
+                          <DropdownMenuItem onSelect={() => setSelectedClass('CSE-A')}>CSE-A</DropdownMenuItem>
+                          <DropdownMenuItem onSelect={() => setSelectedClass('CSE-B')}>CSE-B</DropdownMenuItem>
+                          <DropdownMenuItem onSelect={() => setSelectedClass('ECE-A')}>ECE-A</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
                       <DropdownMenu>
@@ -298,7 +320,7 @@ export default function AttendanceDetailsPage() {
                         </TableRow>
                       </TableHeader>
                       <TableBody>
-                        {attendanceRecords.map((record, index) => (
+                        {filteredRecords.map((record, index) => (
                           <TableRow key={index}>
                             <TableCell>
                               <div className="flex items-center gap-3">
@@ -323,7 +345,7 @@ export default function AttendanceDetailsPage() {
                   </CardContent>
                   <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
                     <p className="text-sm text-muted-foreground">
-                      Showing <strong>1-5</strong> of <strong>{attendanceRecords.length}</strong> records
+                      Showing <strong>1-{filteredRecords.length}</strong> of <strong>{filteredRecords.length}</strong> records
                     </p>
                     <div className="flex gap-2">
                       <Button variant="outline" size="sm" disabled>Previous</Button>
@@ -373,4 +395,3 @@ export default function AttendanceDetailsPage() {
     </div>
   );
 }
-
