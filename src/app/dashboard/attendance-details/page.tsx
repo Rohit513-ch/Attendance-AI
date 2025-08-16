@@ -177,7 +177,7 @@ export default function AttendanceDetailsPage() {
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [isClient, setIsClient] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedClass, setSelectedClass] = useState('All');
+  const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
@@ -220,9 +220,9 @@ export default function AttendanceDetailsPage() {
         );
       })
       .filter(record => {
-        return selectedClass === 'All' || record.class === selectedClass;
+        return selectedDepartment === 'All' || record.department === selectedDepartment;
       });
-  }, [searchTerm, selectedClass, date]);
+  }, [searchTerm, selectedDepartment, date]);
   
   const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
   const currentRecords = filteredRecords.slice(
@@ -240,7 +240,7 @@ export default function AttendanceDetailsPage() {
   
     useEffect(() => {
         setCurrentPage(1);
-    }, [searchTerm, selectedClass, date]);
+    }, [searchTerm, selectedDepartment, date]);
 
 
   const startRecord = filteredRecords.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
@@ -344,15 +344,19 @@ export default function AttendanceDetailsPage() {
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" className="w-full sm:w-auto bg-transparent hover:bg-white/20 hover:text-white">
-                        {selectedClass}
+                        {selectedDepartment}
                         <ChevronDown className="ml-2 h-4 w-4" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem onSelect={() => setSelectedClass('All')}>All</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedClass('CSE-A')}>CSE-A</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedClass('CSE-B')}>CSE-B</DropdownMenuItem>
-                      <DropdownMenuItem onSelect={() => setSelectedClass('ECE-A')}>ECE-A</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('All')}>All</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE')}>CSE</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-AIML')}>CSE-AIML</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-DS')}>CSE-DS</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('Mech')}>Mech</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('EEE')}>EEE</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('ECE')}>ECE</DropdownMenuItem>
+                      <DropdownMenuItem onSelect={() => setSelectedDepartment('BT')}>BT</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                   <DropdownMenu>
