@@ -12,7 +12,6 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarFooter,
-  SidebarHeader,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
@@ -21,9 +20,7 @@ import {
   Camera,
   ListChecks,
   LogOut,
-  Menu,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 
 export default function DashboardLayout({
   children,
@@ -40,10 +37,10 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen">
-        <Sidebar>
-          <SidebarContent className="bg-blue-950 text-white">
-            <SidebarMenu>
+      <div className="flex min-h-screen bg-background">
+        <Sidebar className="flex-shrink-0">
+          <SidebarContent className="bg-blue-950 text-white flex flex-col">
+            <SidebarMenu className="flex-1">
               {navItems.map((item, index) => (
                 <SidebarMenuItem key={index}>
                   <SidebarMenuButton asChild isActive={pathname === item.href} className="text-white hover:bg-blue-900 data-[active=true]:bg-blue-800">
@@ -55,32 +52,32 @@ export default function DashboardLayout({
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+            <SidebarFooter className="mt-auto">
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <SidebarMenuButton asChild className="text-white hover:bg-blue-900">
+                            <Link href="/">
+                                <LogOut className="h-4 w-4" />
+                                <span className="text-white">Logout</span>
+                            </Link>
+                        </SidebarMenuButton>
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarFooter>
           </SidebarContent>
-          <SidebarFooter className="bg-blue-950 text-white">
-            <SidebarMenu>
-                <SidebarMenuItem>
-                    <SidebarMenuButton asChild className="text-white hover:bg-blue-900">
-                        <Link href="/">
-                            <LogOut className="h-4 w-4" />
-                            <span className="text-white">Logout</span>
-                        </Link>
-                    </SidebarMenuButton>
-                </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarFooter>
         </Sidebar>
-        <main className="flex-1 flex flex-col bg-background">
-          <header className="sticky top-0 z-40 w-full border-b bg-white">
-            <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-              <div className="flex gap-6 md:gap-10">
-                 <SidebarTrigger className="md:hidden"/>
-              </div>
-            </div>
-          </header>
-          <div className="flex-1 overflow-y-auto">
-            {children}
-          </div>
-        </main>
+        <div className="flex flex-col flex-1">
+            <header className="sticky top-0 z-40 w-full border-b bg-white">
+                <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
+                    <div className="flex gap-6 md:gap-10">
+                        <SidebarTrigger className="md:hidden"/>
+                    </div>
+                </div>
+            </header>
+            <main className="flex-1 overflow-y-auto">
+                {children}
+            </main>
+        </div>
       </div>
     </SidebarProvider>
   );
