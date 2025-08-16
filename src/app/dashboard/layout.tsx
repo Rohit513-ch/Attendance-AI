@@ -52,7 +52,7 @@ export default function DashboardLayout({
 
   return (
       <div className="flex min-h-screen w-full">
-        <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-gray-900 text-white border-gray-800">
+        <aside className="hidden md:flex h-screen w-64 flex-col border-r bg-gray-900 text-white border-gray-800 sticky top-0">
             <div className="flex h-16 items-center border-b border-gray-800 px-6">
                 <Link
                 href="/dashboard"
