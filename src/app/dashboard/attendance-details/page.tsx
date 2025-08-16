@@ -484,10 +484,6 @@ export default function AttendanceDetailsPage() {
                 <p className="text-sm text-gray-300">
                   Showing <strong>{startRecord}-{endRecord}</strong> of <strong>{filteredRecords.length}</strong> records
                 </p>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">Previous</Button>
-                  <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage >= totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">Next</Button>
-                </div>
               </div>
             </Card>
           </div>
