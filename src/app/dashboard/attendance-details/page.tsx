@@ -216,10 +216,19 @@ export default function AttendanceDetailsPage() {
                           <DropdownMenuItem>ECE-A</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
-                      <Button className="w-full sm:w-auto">
-                        <Download className="mr-2 h-4 w-4" />
-                        Download
-                      </Button>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button className="w-full sm:w-auto">
+                                <Download className="mr-2 h-4 w-4" />
+                                Download
+                                <ChevronDown className="ml-2 h-4 w-4" />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            <DropdownMenuItem>Download as PDF</DropdownMenuItem>
+                            <DropdownMenuItem>Download as Excel</DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
                     </div>
                   </CardHeader>
                   <CardContent>
