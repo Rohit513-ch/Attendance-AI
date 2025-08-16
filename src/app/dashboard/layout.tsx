@@ -13,6 +13,8 @@ import {
   SidebarMenuButton,
   SidebarFooter,
   SidebarInset,
+  SidebarHeader,
+  SidebarTrigger,
 } from '@/components/ui/sidebar';
 import {
   UserPlus,
@@ -37,7 +39,7 @@ export default function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-[#111827]">
+      <div className="flex min-h-screen">
         <Sidebar>
           <SidebarContent>
             <SidebarMenu>
@@ -66,9 +68,8 @@ export default function DashboardLayout({
             </SidebarMenu>
           </SidebarFooter>
         </Sidebar>
-        <div className="flex-1">
+        <div className="flex-1 flex flex-col bg-background">
           <header className="sticky top-0 z-10 flex h-14 items-center justify-between gap-4 border-b border-gray-800 bg-blue-950/95 px-4 backdrop-blur supports-[backdrop-filter]:bg-blue-950/60 sm:px-6">
-            <div className="flex-1" />
           </header>
           <SidebarInset>
             {children}
