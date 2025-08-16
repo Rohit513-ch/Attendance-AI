@@ -3,7 +3,7 @@ import {
   Card,
   CardContent,
 } from '@/components/ui/card';
-import { UserPlus, Users, Camera, ListChecks, Settings } from 'lucide-react';
+import { UserPlus, Users, Camera, ListChecks } from 'lucide-react';
 import Link from 'next/link';
 
 export default function DashboardPage() {
@@ -28,11 +28,6 @@ export default function DashboardPage() {
       icon: ListChecks,
       label: 'View Attendance',
     },
-    {
-      href: '/dashboard/camera-configuration',
-      icon: Settings,
-      label: 'Configure Camera',
-    },
   ];
 
   return (
@@ -46,22 +41,10 @@ export default function DashboardPage() {
         </p>
       </div>
 
-      <div className="grid w-full max-w-4xl gap-6 md:grid-cols-3">
-        {actions.slice(0, 3).map((action) => (
+      <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2">
+        {actions.map((action) => (
             <Link href={action.href} key={action.label}>
                 <Card className="bg-gray-800 border-gray-800 hover:bg-gray-700 transition-colors">
-                    <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
-                        <action.icon className="h-10 w-10 text-yellow-400" />
-                        <p className="font-medium text-gray-400">{action.label}</p>
-                    </CardContent>
-                </Card>
-            </Link>
-        ))}
-      </div>
-       <div className="grid w-full max-w-4xl gap-6 md:grid-cols-2 lg:px-28">
-         {actions.slice(3).map((action) => (
-            <Link href={action.href} key={action.label}>
-                 <Card className="bg-gray-800 border-gray-800 hover:bg-gray-700 transition-colors">
                     <CardContent className="flex flex-col items-center justify-center p-6 space-y-2">
                         <action.icon className="h-10 w-10 text-yellow-400" />
                         <p className="font-medium text-gray-400">{action.label}</p>

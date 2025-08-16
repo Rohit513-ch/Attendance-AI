@@ -21,7 +21,6 @@ import {
   Users,
   Camera,
   ListChecks,
-  Settings,
   LogOut,
   Menu,
 } from 'lucide-react';
@@ -37,7 +36,6 @@ export default function DashboardLayout({
     { href: '/dashboard/view-authorize-students', icon: Users, label: 'View / Authorize Students' },
     { href: '/dashboard/mark-attendance', icon: Camera, label: 'Mark Attendance' },
     { href: '/dashboard/attendance-details', icon: ListChecks, label: 'Attendance Details' },
-    { href: '/dashboard/camera-configuration', icon: Settings, label: 'Camera Configuration' },
   ];
 
   return (
