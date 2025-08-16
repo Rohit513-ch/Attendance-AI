@@ -436,12 +436,8 @@ export default function ViewAuthorizeStudentsPage() {
               <strong>{filteredStudents.length}</strong> students
             </p>
             <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={handlePreviousPage} disabled={currentPage === 1} className="bg-transparent hover:bg-white/20 hover:text-white">
-                Previous
-              </Button>
-              <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage >= totalPages} className="bg-transparent hover:bg-white/20 hover:text-white">
-                Next
-              </Button>
+              <button className="boton-elegante" onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+              <button className="boton-elegante" onClick={handleNextPage} disabled={currentPage >= totalPages}>Next</button>
             </div>
           </div>
         </div>
