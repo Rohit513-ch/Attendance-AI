@@ -107,6 +107,42 @@ const attendanceRecords = [
     cameraId: 'CAM-01',
     photo: 'https://placehold.co/40x40.png'
   },
+  {
+    date: '2024-05-21',
+    time: '09:00 AM',
+    studentId: '23CSE012',
+    name: 'Devi Prasad Mohanty',
+    department: 'CSE',
+    class: 'CSE-A',
+    status: 'Present',
+    confidence: '99%',
+    cameraId: 'CAM-01',
+    photo: 'https://placehold.co/40x40.png'
+    },
+    {
+    date: '2024-05-21',
+    time: '09:03 AM',
+    studentId: '23CSE024',
+    name: 'Pratik Kar',
+    department: 'CSE',
+    class: 'CSE-A',
+    status: 'Present',
+    confidence: '98%',
+    cameraId: 'CAM-01',
+    photo: 'https://placehold.co/40x40.png'
+    },
+     {
+    date: '2024-05-21',
+    time: '09:05 AM',
+    studentId: '23CSE045',
+    name: 'Rohit Pandit',
+    department: 'CSE',
+    class: 'CSE-B',
+    status: 'Present',
+    confidence: '95%',
+    cameraId: 'CAM-01',
+    photo: 'https://placehold.co/40x40.png'
+    },
 ];
 
 const getStatusBadge = (status: string) => {
@@ -201,6 +237,11 @@ export default function AttendanceDetailsPage() {
   const handleNextPage = () => {
     setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
   };
+  
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [searchTerm, selectedClass, date]);
+
 
   const startRecord = filteredRecords.length > 0 ? (currentPage - 1) * itemsPerPage + 1 : 0;
   const endRecord = Math.min(currentPage * itemsPerPage, filteredRecords.length);
@@ -420,9 +461,3 @@ export default function AttendanceDetailsPage() {
       </div>
     </div>
   );
-
-    
-
-    
-
-    
