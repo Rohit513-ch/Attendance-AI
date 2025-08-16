@@ -295,7 +295,7 @@ export default function AttendanceDetailsPage() {
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
+    setCurrentPage(prev => (prev < totalPages ? prev + 1 : prev));
   };
   
   useEffect(() => {
