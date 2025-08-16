@@ -295,7 +295,8 @@ export default function AttendanceDetailsPage() {
   };
 
   const handleNextPage = () => {
-    setCurrentPage(prev => (prev < totalPages ? prev + 1 : totalPages));
+    const newTotalPages = Math.ceil(filteredRecords.length / itemsPerPage);
+    setCurrentPage(prev => (prev < newTotalPages ? prev + 1 : newTotalPages));
   };
   
   useEffect(() => {
@@ -485,12 +486,6 @@ export default function AttendanceDetailsPage() {
                   Showing <strong>{startRecord}-{endRecord}</strong> of <strong>{filteredRecords.length}</strong> records
                 </p>
                 <div className="flex gap-2">
-                  <button className="boton-elegante" onClick={handlePreviousPage} disabled={currentPage === 1}>
-                    Previous
-                  </button>
-                  <button className="boton-elegante" onClick={handleNextPage} disabled={currentPage >= totalPages}>
-                    Next
-                  </button>
                 </div>
               </div>
             </Card>
