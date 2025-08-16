@@ -222,7 +222,7 @@ export default function AttendanceDetailsPage() {
       .filter(record => {
         return selectedClass === 'All' || record.class === selectedClass;
       });
-  }, [searchTerm, selectedClass, date, isClient]);
+  }, [searchTerm, selectedClass, date]);
   
   const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
   const currentRecords = filteredRecords.slice(
