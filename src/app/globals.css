@@ -80,4 +80,10 @@
   body {
     @apply bg-background text-foreground;
   }
+  .login-gradient {
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+  }
+  .login-button-gradient {
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+  }
 }

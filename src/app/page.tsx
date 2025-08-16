@@ -69,7 +69,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex justify-center gap-4">
               <Button asChild size="lg">
-                <Link href="/dashboard">Go to Dashboard</Link>
+                <Link href="/login">Go to Dashboard</Link>
               </Button>
               <Button asChild variant="secondary" size="lg">
                 <Link href="#features">Explore Features</Link>
