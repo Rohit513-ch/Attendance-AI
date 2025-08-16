@@ -25,7 +25,7 @@ import { Textarea } from '@/components/ui/textarea';
 
 export function RegistrationForm() {
   return (
-      <Card className="w-[80%] max-w-[800px] mx-auto my-0 p-5 rounded-xl shadow-lg bg-card">
+      <Card className="w-[80%] max-w-[800px] mx-auto my-0 p-5 rounded-xl shadow-lg bg-white/10 backdrop-blur-sm border-white/20 text-white">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
             Student Registration Form
@@ -36,36 +36,36 @@ export function RegistrationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="col-span-2">
                 <Label htmlFor="studentName">Student Name <span className="text-red-500">*</span></Label>
-                <Input id="studentName" required />
+                <Input id="studentName" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="collegeId">CollegeID(Ex: 23CSEDS012) <span className="text-red-500">*</span></Label>
-                <Input id="collegeId" required />
+                <Input id="collegeId" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="universityId">UniversityID(Ex: 23UGO10978) <span className="text-red-500">*</span></Label>
-                <Input id="universityId" required />
+                <Input id="universityId" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="mobileNo">Mobile No. <span className="text-red-500">*</span></Label>
-                <Input id="mobileNo" required />
+                <Input id="mobileNo" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="emailId">Email Id <span className="text-red-500">*</span></Label>
-                <Input id="emailId" type="email" required />
+                <Input id="emailId" type="email" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="fatherName">Father Name <span className="text-red-500">*</span></Label>
-                <Input id="fatherName" required />
+                <Input id="fatherName" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="motherName">Mother Name <span className="text-red-500">*</span></Label>
-                <Input id="motherName" required />
+                <Input id="motherName" required className="bg-transparent placeholder:text-gray-400" />
               </div>
               <div>
                 <Label htmlFor="course">Select Course <span className="text-red-500">*</span></Label>
                 <Select required>
-                  <SelectTrigger id="course">
+                  <SelectTrigger id="course" className="bg-transparent">
                     <SelectValue placeholder="Select..." />
                   </SelectTrigger>
                   <SelectContent>
@@ -78,7 +78,7 @@ export function RegistrationForm() {
               </div>
               <div>
                 <Label htmlFor="dob">Date Of Birth <span className="text-red-500">*</span></Label>
-                <Input id="dob" type="date" placeholder="dd-----yyyy" required />
+                <Input id="dob" type="date" placeholder="dd-----yyyy" required className="bg-transparent" />
               </div>
               <div>
                 <Label>Gender <span className="text-red-500">*</span></Label>
@@ -99,7 +99,7 @@ export function RegistrationForm() {
               </div>
               <div>
                 <Label htmlFor="studentPhoto">Student Photo <span className="text-red-500">*</span></Label>
-                <Input id="studentPhoto" type="file" required />
+                <Input id="studentPhoto" type="file" required className="bg-transparent" />
               </div>
               <div className="col-span-2">
                 <Label>Select Branch <span className="text-red-500">*</span></Label>
@@ -124,7 +124,7 @@ export function RegistrationForm() {
               </div>
               <div className="col-span-2">
                 <Label htmlFor="address">Address <span className="text-red-500">*</span></Label>
-                <Textarea id="address" required />
+                <Textarea id="address" required className="bg-transparent placeholder:text-gray-400" />
               </div>
             </div>
           </form>
