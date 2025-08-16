@@ -1,3 +1,4 @@
+
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -182,7 +183,7 @@ export default function Home() {
                     </ul>
                 </div>
                 <div className="flex justify-center">
-                    <Image src="https://placehold.co/550x310.png" alt="Data Analytics Dashboard" data-ai-hint="dashboard analytics" width={550} height={310} className="rounded-lg shadow-xl" />
+                    <Image src="https://i.postimg.cc/G2hdKYxT/manual-vs-ai-based-attendance-system.jpg" alt="Data Analytics Dashboard" data-ai-hint="dashboard analytics" width={550} height={310} className="rounded-lg shadow-xl" />
                 </div>
              </div>
           </div>
