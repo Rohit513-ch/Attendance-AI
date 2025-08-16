@@ -34,51 +34,51 @@ const students = [
   {
     id: '1',
     photo: 'https://placehold.co/40x40.png',
-    name: 'Devi Prasad Mohanty',
+    name: 'Aarav Sharma',
     rollNo: '23CSE001',
     class: 'CSE-A',
     department: 'CSE',
-    email: 'deviprasad.mohanty@example.com',
+    email: 'aarav.sharma@example.com',
     status: 'Pending',
   },
   {
     id: '2',
     photo: 'https://placehold.co/40x40.png',
-    name: 'Pratik Kar',
+    name: 'Diya Singh',
     rollNo: '23ECE012',
     class: 'ECE-B',
     department: 'ECE',
-    email: 'pratik.kar@example.com',
+    email: 'diya.singh@example.com',
     status: 'Authorized',
   },
   {
     id: '3',
     photo: 'https://placehold.co/40x40.png',
-    name: 'Rohit Pandit',
+    name: 'Rohan Gupta',
     rollNo: '23MECH034',
     class: 'MECH-A',
     department: 'Mechanical',
-    email: 'rohit.pandit@example.com',
+    email: 'rohan.gupta@example.com',
     status: 'Rejected',
   },
   {
     id: '4',
     photo: 'https://placehold.co/40x40.png',
-    name: 'Shyam Gupta',
+    name: 'Priya Patel',
     rollNo: '23CSE021',
     class: 'CSE-A',
     department: 'CSE',
-    email: 'shyam.gupta@example.com',
+    email: 'priya.patel@example.com',
     status: 'Pending',
   },
   {
     id: '5',
     photo: 'https://placehold.co/40x40.png',
-    name: 'Chitranshu Sanket',
+    name: 'Advik Kumar',
     rollNo: '23IT005',
     class: 'IT-A',
     department: 'IT',
-    email: 'chitranshu.sanket@example.com',
+    email: 'advik.kumar@example.com',
     status: 'Authorized',
   },
 ];
@@ -123,7 +123,6 @@ export default function ViewAuthorizeStudentsPage() {
   }
   
   return (
-    <div className="flex min-h-screen flex-col bg-gray-50 dark:bg-gray-900/50">
       <main className="flex-1 p-4 md:p-6 lg:p-8">
         <div className="mx-auto w-full max-w-7xl">
           <div className="mb-8">
@@ -136,10 +135,10 @@ export default function ViewAuthorizeStudentsPage() {
             </p>
           </div>
 
-          <div className="rounded-lg border bg-white dark:border-gray-800 dark:bg-card">
+          <div className="rounded-lg border bg-card text-card-foreground">
             <div className="flex flex-col gap-4 border-b p-4 dark:border-gray-800 md:flex-row md:items-center">
               <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                 <Input
                   placeholder="Search by name, roll no..."
                   className="pl-10"
@@ -177,13 +176,6 @@ export default function ViewAuthorizeStudentsPage() {
                 </DropdownMenu>
               </div>
             </div>
-
-            <div className="flex items-center justify-between p-4">
-              <div className="text-sm text-gray-500 dark:text-gray-400">
-                1-5 of {students.length} students
-              </div>
-            </div>
-
             <Table>
               <TableHeader>
                 <TableRow>
@@ -243,7 +235,6 @@ export default function ViewAuthorizeStudentsPage() {
                 ))}
               </TableBody>
             </Table>
-
              <div className="flex items-center justify-between border-t p-4 dark:border-gray-800">
                 <p className="text-sm text-muted-foreground">
                     Showing <strong>1-5</strong> of <strong>{students.length}</strong> students
@@ -253,10 +244,8 @@ export default function ViewAuthorizeStudentsPage() {
                     <Button variant="outline" size="sm">Next</Button>
                 </div>
             </div>
-
           </div>
         </div>
       </main>
-    </div>
   );
 }
