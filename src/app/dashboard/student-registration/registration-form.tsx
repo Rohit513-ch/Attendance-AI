@@ -39,6 +39,14 @@ export function RegistrationForm() {
                 <Input id="studentName" />
               </div>
               <div>
+                <Label htmlFor="collegeId">CollegeID(Ex: 23CSEDS012)</Label>
+                <Input id="collegeId" />
+              </div>
+              <div>
+                <Label htmlFor="universityId">UniversityID(Ex: 23UGO10978)</Label>
+                <Input id="universityId" />
+              </div>
+              <div>
                 <Label htmlFor="mobileNo">Mobile No.</Label>
                 <Input id="mobileNo" />
               </div>
