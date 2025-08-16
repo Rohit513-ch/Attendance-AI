@@ -1,18 +1,59 @@
 
 'use client';
 
+import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import type { AttendanceRecord } from '@/app/dashboard/attendance-details/page';
+import { format } from 'date-fns';
 
-const chartData = [
-    { name: 'Mon', present: 28, absent: 2 },
-    { name: 'Tue', present: 29, absent: 1 },
-    { name: 'Wed', present: 30, absent: 0 },
-    { name: 'Thu', present: 27, absent: 3 },
-    { name: 'Fri', present: 25, absent: 5 },
-    { name: 'Sat', present: 22, absent: 8 },
-];
+interface AttendanceChartProps {
+    data: AttendanceRecord[];
+}
 
-export function AttendanceChart() {
+export function AttendanceChart({ data }: AttendanceChartProps) {
+    const chartData = useMemo(() => {
+        if (!data || data.length === 0) {
+            return [
+                { name: 'Mon', present: 0, absent: 0 },
+                { name: 'Tue', present: 0, absent: 0 },
+                { name: 'Wed', present: 0, absent: 0 },
+                { name: 'Thu', present: 0, absent: 0 },
+                { name: 'Fri', present: 0, absent: 0 },
+                { name: 'Sat', present: 0, absent: 0 },
+            ];
+        }
+
+        const dailyData: { [key: string]: { present: number; absent: number } } = {
+            'Mon': { present: 0, absent: 0 },
+            'Tue': { present: 0, absent: 0 },
+            'Wed': { present: 0, absent: 0 },
+            'Thu': { present: 0, absent: 0 },
+            'Fri': { present: 0, absent: 0 },
+            'Sat': { present: 0, absent: 0 },
+        };
+
+        data.forEach(record => {
+            try {
+                const dayOfWeek = format(new Date(record.date), 'EEE');
+                if (dailyData[dayOfWeek]) {
+                    if (record.status === 'Present' || record.status === 'Late') {
+                        dailyData[dayOfWeek].present++;
+                    } else if (record.status === 'Absent') {
+                        dailyData[dayOfWeek].absent++;
+                    }
+                }
+            } catch (e) {
+                // Ignore invalid dates
+            }
+        });
+        
+        return Object.entries(dailyData).map(([name, values]) => ({
+            name,
+            ...values,
+        }));
+
+    }, [data]);
+
     return (
         <div className="w-full h-[300px] text-black">
             <ResponsiveContainer width="100%" height="100%">

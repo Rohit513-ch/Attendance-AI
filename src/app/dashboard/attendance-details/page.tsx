@@ -56,7 +56,6 @@ const attendanceRecords = [
         class: 'CSE-A',
         status: 'Present',
         confidence: '99%',
-        cameraId: 'CAM-01',
         photo: 'https://placehold.co/40x40.png'
     },
     {
@@ -337,6 +336,8 @@ const attendanceRecords = [
     }
 ];
 
+export type AttendanceRecord = typeof attendanceRecords[0];
+
 const getStatusBadge = (status: string) => {
   switch (status) {
     case 'Present':
@@ -381,11 +382,10 @@ export default function AttendanceDetailsPage() {
     let recordsToShow = attendanceRecords;
 
     if (date) {
-        const byDate = attendanceRecords.filter(record => {
+        recordsToShow = recordsToShow.filter(record => {
             const recordDate = new Date(record.date);
             return recordDate.toDateString() === date.toDateString();
         });
-        recordsToShow = byDate;
     }
 
     return recordsToShow
@@ -401,7 +401,9 @@ export default function AttendanceDetailsPage() {
       });
   }, [searchTerm, selectedDepartment, date]);
   
-  const totalPages = Math.ceil(filteredRecords.length / itemsPerPage);
+  const totalPages = useMemo(() => {
+    return Math.ceil(filteredRecords.length / itemsPerPage);
+  }, [filteredRecords, itemsPerPage]);
   
   const currentRecords = useMemo(() => {
       return filteredRecords.slice(
@@ -625,7 +627,7 @@ export default function AttendanceDetailsPage() {
                 <CardTitle>Analytics</CardTitle>
               </CardHeader>
               <CardContent>
-                <AttendanceChart />
+                <AttendanceChart data={filteredRecords} />
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
