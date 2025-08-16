@@ -39,15 +39,6 @@ export default function Home() {
     'Streamlined process for teachers and staff.',
   ];
 
-  const teamMembers = [
-    { name: 'Team Member 1', role: 'Project Lead', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-    { name: 'Team Member 2', role: 'Frontend Developer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-    { name: 'Team Member 3', role: 'AI/ML Engineer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-    { name: 'Team Member 4', role: 'Backend Developer', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-    { name: 'Supervisor', role: 'Project Supervisor', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-    { name: 'Class Teacher', role: 'Class Teacher', image: 'https://placehold.co/200x200.png', hint: 'person portrait' },
-  ];
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
@@ -186,36 +177,6 @@ export default function Home() {
                     <Image src="https://i.postimg.cc/G2hdKYxT/manual-vs-ai-based-attendance-system.jpg" alt="Data Analytics Dashboard" data-ai-hint="dashboard analytics" width={550} height={310} className="rounded-lg shadow-xl" />
                 </div>
              </div>
-          </div>
-        </section>
-
-        <section id="team" className="relative w-full py-12 md:py-24 lg:py-32">
-          <Image
-            src="https://i.postimg.cc/MGck8n4C/pexels-cottonbro-9665216.jpg"
-            alt="Team Background"
-            fill
-            style={{objectFit: 'cover'}}
-            className="absolute inset-0 -z-10 h-full w-full"
-          />
-          <div className="absolute inset-0 -z-10 h-full w-full bg-black/60"></div>
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl text-white">Our Team</h2>
-                <p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Meet the dedicated individuals behind AttendAI.
-                </p>
-            </div>
-            <div className="mx-auto grid grid-cols-1 gap-8 py-12 sm:grid-cols-2 md:grid-cols-3">
-              {teamMembers.map((member) => (
-                <Card key={member.name} className="text-center overflow-hidden bg-white/10 backdrop-blur-sm border-white/20">
-                  <Image src={member.image} data-ai-hint={member.hint} alt={member.name} width={200} height={200} className="mx-auto w-full h-48 object-cover" />
-                  <CardHeader>
-                    <CardTitle className="font-headline text-xl text-white">{member.name}</CardTitle>
-                    <CardDescription className="text-gray-300">{member.role}</CardDescription>
-                  </CardHeader>
-                </Card>
-              ))}
-            </div>
           </div>
         </section>
       </main>
