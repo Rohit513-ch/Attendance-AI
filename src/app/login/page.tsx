@@ -4,6 +4,7 @@
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const LoginForm = dynamic(() => import('./login-form').then(mod => mod.LoginForm), { 
     ssr: false,
@@ -32,9 +33,16 @@ const LoginForm = dynamic(() => import('./login-form').then(mod => mod.LoginForm
 
 export default function LoginPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background p-4">
-      <div className="flex w-full max-w-4xl rounded-lg shadow-lg overflow-hidden">
-        <div className="hidden md:flex flex-col justify-center w-1/2 p-12 text-white login-gradient">
+    <div className="relative flex min-h-screen items-center justify-center p-4">
+       <Image
+        src="https://i.postimg.cc/fTKLczNP/pawel-czerwinski-ud-RTu-YZKEVc-unsplash.jpg"
+        alt="Background"
+        fill
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="relative z-10 flex w-full max-w-4xl rounded-lg shadow-lg overflow-hidden bg-black/20 backdrop-blur-sm">
+        <div className="hidden md:flex flex-col justify-center w-1/2 p-12 text-white">
           <h1 className="text-4xl font-bold mb-4 font-headline">Welcome to AttendAI</h1>
           <p className="text-lg">
             Streamline your attendance process with our AI-powered facial recognition system.
