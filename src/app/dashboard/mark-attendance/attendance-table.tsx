@@ -64,19 +64,25 @@ export function AttendanceTable() {
                 </Avatar>
                 <div>
                   <div className="font-medium">{entry.name}</div>
-                  {entry.status === 'Present' && !entry.verified && (
+                  {entry.status === 'Present' && !entry.verified && entry.reason && (
                     <div className="text-xs text-destructive">{entry.reason}</div>
                   )}
                 </div>
               </div>
             </TableCell>
             <TableCell>
-              <Badge variant={entry.status === 'Present' ? 'default' : 'secondary'}
-                className={entry.status === 'Present' ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' : ''}>
-                {entry.status === 'Present' && entry.verified && <CheckCircle2 className="mr-1 h-3 w-3 text-green-600 dark:text-green-400" />}
-                {entry.status === 'Present' && !entry.verified && <XCircle className="mr-1 h-3 w-3 text-red-600 dark:text-red-400" />}
-                {entry.status}
-              </Badge>
+                {entry.status === 'Present' ? (
+                    <Badge variant={entry.verified ? 'default' : 'destructive'}
+                        className={entry.verified ? 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300' : ''}>
+                        {entry.verified ? <CheckCircle2 className="mr-1 h-3 w-3" /> : <XCircle className="mr-1 h-3 w-3" />}
+                        {entry.status}
+                    </Badge>
+                ) : (
+                    <Badge variant='secondary' className="bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">
+                        <XCircle className="mr-1 h-3 w-3" />
+                        {entry.status}
+                    </Badge>
+                )}
             </TableCell>
             <TableCell className="text-right">
               <div className="flex items-center justify-end gap-1 text-muted-foreground">
