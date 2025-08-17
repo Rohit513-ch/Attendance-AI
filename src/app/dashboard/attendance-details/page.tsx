@@ -89,7 +89,7 @@ const initialAttendanceRecords = [
         name: 'Priya Patel',
         department: 'CSE',
         class: 'CSE-A',
-        status: 'Late',
+        status: 'Present',
         confidence: '98%',
         cameraId: 'CAM-02',
         photo: 'https://placehold.co/40x40.png'
@@ -197,7 +197,7 @@ const initialAttendanceRecords = [
         name: 'Pratik Priyadarshi',
         department: 'CSE',
         class: 'CSE-C',
-        status: 'Late',
+        status: 'Present',
         confidence: '99%',
         cameraId: 'CAM-03',
         photo: 'https://placehold.co/40x40.png'
@@ -257,7 +257,7 @@ const initialAttendanceRecords = [
         name: 'Sudhansu Sahoo',
         department: 'IT',
         class: 'IT-A',
-        status: 'Late',
+        status: 'Present',
         confidence: '99%',
         cameraId: 'CAM-04',
         photo: 'https://placehold.co/40x40.png'
@@ -347,13 +347,6 @@ const getStatusBadge = (status: string) => {
           {status}
         </Badge>
       );
-    case 'Late':
-      return (
-        <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300 hover:bg-yellow-100/80">
-          <Clock className="mr-1 h-3 w-3" />
-          {status}
-        </Badge>
-      );
     case 'Absent':
       return (
         <Badge variant="destructive">
@@ -426,7 +419,7 @@ export default function AttendanceDetailsPage() {
   },[filteredRecords, currentPage, itemsPerPage]);
 
   const summary = useMemo(() => {
-    const present = filteredRecords.filter(r => r.status === 'Present' || r.status === 'Late').length;
+    const present = filteredRecords.filter(r => r.status === 'Present').length;
     const absent = filteredRecords.filter(r => r.status === 'Absent').length;
     const total = filteredRecords.length;
     return { present, absent, total };
