@@ -47,76 +47,76 @@ import type { RowInput } from 'jspdf-autotable';
 
 
 const initialAttendanceRecords = [
-    { date: '2024-05-22', time: '--', studentId: 'CSE001', name: 'Ankit Sharma', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CSE002', name: 'Neha Verma', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'CSE001', name: 'Ankit Sharma', department: 'CSE', class: 'CSE-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'CSE002', name: 'Neha Verma', department: 'CSE', class: 'CSE-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CSE003', name: 'Raj Patel', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CSE004', name: 'Divya Gupta', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:03 AM', studentId: 'CSE004', name: 'Divya Gupta', department: 'CSE', class: 'CSE-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CSE005', name: 'Karan Singh', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CSE006', name: 'Radhika Nair', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CSE007', name: 'Manav Iyer', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:05 AM', studentId: 'CSE007', name: 'Manav Iyer', department: 'CSE', class: 'CSE-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CSE008', name: 'Shruti Chawla', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CSE009', name: 'Nikhil Joshi', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:02 AM', studentId: 'CSE009', name: 'Nikhil Joshi', department: 'CSE', class: 'CSE-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CSE010', name: 'Sneha Kulkarni', department: 'CSE', class: 'CSE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT001', name: 'Varun Mishra', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'IT002', name: 'Aditi Jain', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'IT002', name: 'Aditi Jain', department: 'IT', class: 'IT-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT003', name: 'Saurabh Kumar', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'IT004', name: 'Meenal Shah', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:04 AM', studentId: 'IT004', name: 'Meenal Shah', department: 'IT', class: 'IT-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT005', name: 'Harshita Yadav', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'IT006', name: 'Akash Reddy', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'IT006', name: 'Akash Reddy', department: 'IT', class: 'IT-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT007', name: 'Ritika Malhotra', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT008', name: 'Abhishek Das', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'IT009', name: 'Tanya Kaur', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:06 AM', studentId: 'IT009', name: 'Tanya Kaur', department: 'IT', class: 'IT-4A', status: 'Present', confidence: '95%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'IT010', name: 'Rohit Goel', department: 'IT', class: 'IT-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ECE001', name: 'Deepak Tiwari', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'ECE001', name: 'Deepak Tiwari', department: 'ECE', class: 'ECE-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ECE002', name: 'Ananya Rathi', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ECE003', name: 'Mohit Bansal', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:02 AM', studentId: 'ECE003', name: 'Mohit Bansal', department: 'ECE', class: 'ECE-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ECE004', name: 'Shreya Menon', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ECE005', name: 'Chirag Jain', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ECE006', name: 'Sunidhi Rao', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:03 AM', studentId: 'ECE006', name: 'Sunidhi Rao', department: 'ECE', class: 'ECE-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ECE007', name: 'Rajat Ghosh', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ECE008', name: 'Pooja Sinha', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'ECE008', name: 'Pooja Sinha', department: 'ECE', class: 'ECE-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ECE009', name: 'Aman Saxena', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ECE010', name: 'Isha Kapoor', department: 'ECE', class: 'ECE-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:05 AM', studentId: 'ECE010', name: 'Isha Kapoor', department: 'ECE', class: 'ECE-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME001', name: 'Raghav Chouhan', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ME002', name: 'Diya Agarwal', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:02 AM', studentId: 'ME002', name: 'Diya Agarwal', department: 'Mechanical', class: 'MECH-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME003', name: 'Mohan Sharma', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ME004', name: 'Aishwarya Shetty', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'ME004', name: 'Aishwarya Shetty', department: 'Mechanical', class: 'MECH-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME005', name: 'Yashwant Rao', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ME006', name: 'Simran Bedi', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:03 AM', studentId: 'ME006', name: 'Simran Bedi', department: 'Mechanical', class: 'MECH-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME007', name: 'Pranav Saxena', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME008', name: 'Charu Mehta', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'ME009', name: 'Akhil Verma', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'ME009', name: 'Akhil Verma', department: 'Mechanical', class: 'MECH-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'ME010', name: 'Kritika Narayan', department: 'Mechanical', class: 'MECH-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CE001', name: 'Gaurav Pandey', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:04 AM', studentId: 'CE001', name: 'Gaurav Pandey', department: 'Civil', class: 'Civil-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CE002', name: 'Swati Jha', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CE003', name: 'Harish Mittal', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'CE003', name: 'Harish Mittal', department: 'Civil', class: 'Civil-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CE004', name: 'Rupal Joshi', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CE005', name: 'Krishan Thakur', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:02 AM', studentId: 'CE005', name: 'Krishan Thakur', department: 'Civil', class: 'Civil-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CE006', name: 'Madhuri Reddy', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CE007', name: 'Nitin Kapoor', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CE008', name: 'Sakshi Mehra', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'CE008', name: 'Sakshi Mehra', department: 'Civil', class: 'Civil-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'CE009', name: 'Udit Malhotra', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'CE010', name: 'Payal Saini', department: 'Civil', class: 'Civil-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:03 AM', studentId: 'CE010', name: 'Payal Saini', department: 'Civil', class: 'Civil-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML001', name: 'Aarav Sharma', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'AIML002', name: 'Priya Nair', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'AIML002', name: 'Priya Nair', department: 'AIML', class: 'AIML-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML003', name: 'Rohan Mehta', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'AIML004', name: 'Sneha Iyer', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:04 AM', studentId: 'AIML004', name: 'Sneha Iyer', department: 'AIML', class: 'AIML-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML005', name: 'Aditya Verma', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'AIML006', name: 'Kavya Reddy', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'AIML006', name: 'Kavya Reddy', department: 'AIML', class: 'AIML-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML007', name: 'Manish Gupta', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML008', name: 'Ritu Sharma', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'AIML009', name: 'Saurav Singh', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:06 AM', studentId: 'AIML009', name: 'Saurav Singh', department: 'AIML', class: 'AIML-4A', status: 'Present', confidence: '95%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'AIML010', name: 'Meera Pillai', department: 'AIML', class: 'AIML-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'DS001', name: 'Tanvi Joshi', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:02 AM', studentId: 'DS001', name: 'Tanvi Joshi', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS002', name: 'Arjun Patel', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'DS003', name: 'Shivani Deshmukh', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:00 AM', studentId: 'DS003', name: 'Shivani Deshmukh', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '99%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS004', name: 'Rahul Choudhary', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'DS005', name: 'Ananya Menon', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:03 AM', studentId: 'DS005', name: 'Ananya Menon', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '97%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS006', name: 'Karan Malhotra', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS007', name: 'Pooja Kulkarni', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'DS008', name: 'Vivek Jain', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:01 AM', studentId: 'DS008', name: 'Vivek Jain', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS009', name: 'Neha Agarwal', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
-    { date: '2024-05-22', time: '--', studentId: 'DS010', name: 'Harsh Varma', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '09:05 AM', studentId: 'DS010', name: 'Harsh Varma', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
     {
         date: '2024-05-22',
         time: '--',
@@ -292,12 +292,7 @@ const getStatusBadge = (status: string) => {
         </Badge>
       );
   }
-  return (
-        <Badge variant="secondary">
-          <Clock className="mr-1 h-3 w-3" />
-          No Record
-        </Badge>
-    );
+  return null;
 };
 
 export default function AttendanceDetailsPage() {
@@ -495,6 +490,21 @@ export default function AttendanceDetailsPage() {
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('DS')}>DS</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('EEE')}>EEE</DropdownMenuItem>
                       <DropdownMenuItem onSelect={() => setSelectedDepartment('BT')}>BT</DropdownMenuItem>
+                       <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-B')}>CSE-B</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-C')}>CSE-C</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-D')}>CSE-D</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-E')}>CSE-E</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-F')}>CSE-F</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-G')}>CSE-G</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-H')}>CSE-H</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-I')}>CSE-I</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-J')}>CSE-J</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-K')}>CSE-K</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-DS')}>CSE-DS</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CSE-AIML')}>CSE-AIML</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('MECH')}>MECH</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CIVIL')}>CIVIL</DropdownMenuItem>
+                        <DropdownMenuItem onSelect={() => setSelectedDepartment('CHEM')}>CHEM</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                   <DropdownMenu>
@@ -604,5 +614,7 @@ export default function AttendanceDetailsPage() {
     </div>
   );
 }
+
+    
 
     
