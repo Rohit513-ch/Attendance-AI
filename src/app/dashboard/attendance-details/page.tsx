@@ -339,24 +339,23 @@ const initialAttendanceRecords = [
 export type AttendanceRecord = typeof initialAttendanceRecords[0];
 
 const getStatusBadge = (status: string) => {
-  switch (status) {
-    case 'Present':
+  if (status === 'Present') {
       return (
         <Badge className="bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300 hover:bg-green-100/80">
           <CheckCircle className="mr-1 h-3 w-3" />
-          {status}
+          Present
         </Badge>
       );
-    case 'Absent':
+  }
+  if (status === 'Absent') {
       return (
         <Badge variant="destructive">
           <XCircle className="mr-1 h-3 w-3" />
-          {status}
+          Absent
         </Badge>
       );
-    default:
-      return <Badge>{status}</Badge>;
   }
+  return null;
 };
 
 export default function AttendanceDetailsPage() {
