@@ -220,24 +220,48 @@ const getStatusBadge = (status: string) => {
 
 export default function ViewAuthorizeStudentsPage() {
   const [isClient, setIsClient] = useState(false);
-  const [students, setStudents] = useState(initialStudents);
+  const [students, setStudents] = useState<Student[]>([]);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 7;
-
+  
   useEffect(() => {
     setIsClient(true);
+    try {
+        const storedStudents = localStorage.getItem('students');
+        if (storedStudents) {
+            setStudents(JSON.parse(storedStudents));
+        } else {
+            localStorage.setItem('students', JSON.stringify(initialStudents));
+            setStudents(initialStudents);
+        }
+    } catch (error) {
+        console.error("Could not access localStorage", error);
+        setStudents(initialStudents);
+    }
   }, []);
 
+  const updateLocalStorage = (updatedStudents: Student[]) => {
+      try {
+        localStorage.setItem('students', JSON.stringify(updatedStudents));
+      } catch (error) {
+          console.error("Failed to update localStorage", error);
+      }
+  }
+
   const handleStatusChange = (id: string, status: 'Authorized' | 'Rejected') => {
-    setStudents(students.map(student => student.id === id ? { ...student, status } : student));
+    const updatedStudents = students.map(student => student.id === id ? { ...student, status } : student)
+    setStudents(updatedStudents);
+    updateLocalStorage(updatedStudents);
   };
 
   const handleDelete = (id: string) => {
-    setStudents(students.filter(student => student.id !== id));
+    const updatedStudents = students.filter(student => student.id !== id);
+    setStudents(updatedStudents);
+    updateLocalStorage(updatedStudents);
   };
 
   const handleEdit = (student: Student) => {
@@ -245,7 +269,9 @@ export default function ViewAuthorizeStudentsPage() {
   };
 
   const handleUpdate = (updatedStudent: Student) => {
-    setStudents(students.map(student => (student.id === updatedStudent.id ? updatedStudent : student)));
+    const updatedStudents = students.map(student => (student.id === updatedStudent.id ? updatedStudent : student));
+    setStudents(updatedStudents);
+    updateLocalStorage(updatedStudents);
     setEditingStudent(null);
   };
   

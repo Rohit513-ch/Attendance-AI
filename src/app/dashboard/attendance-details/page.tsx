@@ -46,7 +46,7 @@ import * as XLSX from 'xlsx';
 import type { RowInput } from 'jspdf-autotable';
 
 
-const attendanceRecords = [
+const initialAttendanceRecords = [
     {
         date: '2024-05-20',
         time: '09:01 AM',
@@ -336,7 +336,7 @@ const attendanceRecords = [
     }
 ];
 
-export type AttendanceRecord = typeof attendanceRecords[0];
+export type AttendanceRecord = typeof initialAttendanceRecords[0];
 
 const getStatusBadge = (status: string) => {
   switch (status) {
@@ -372,10 +372,23 @@ export default function AttendanceDetailsPage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
+  const [attendanceRecords, setAttendanceRecords] = useState<AttendanceRecord[]>([]);
   const itemsPerPage = 50;
 
   useEffect(() => {
     setIsClient(true);
+    try {
+        const storedRecords = localStorage.getItem('attendanceRecords');
+        if (storedRecords) {
+            setAttendanceRecords(JSON.parse(storedRecords));
+        } else {
+            localStorage.setItem('attendanceRecords', JSON.stringify(initialAttendanceRecords));
+            setAttendanceRecords(initialAttendanceRecords);
+        }
+    } catch (error) {
+        console.error("Could not access localStorage", error);
+        setAttendanceRecords(initialAttendanceRecords);
+    }
   }, []);
 
   const filteredRecords = useMemo(() => {
@@ -399,7 +412,7 @@ export default function AttendanceDetailsPage() {
       .filter(record => {
         return selectedDepartment === 'All' || record.department === selectedDepartment;
       });
-  }, [searchTerm, selectedDepartment, date]);
+  }, [searchTerm, selectedDepartment, date, attendanceRecords]);
   
   const totalPages = useMemo(() => {
     return Math.ceil(filteredRecords.length / itemsPerPage);
