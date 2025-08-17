@@ -41,7 +41,7 @@ export default function LoginPage() {
         className="object-cover"
       />
       <div className="absolute inset-0 bg-black/50" />
-      <div className="relative z-10 flex w-full max-w-4xl rounded-lg shadow-lg overflow-hidden">
+      <div className="relative z-10 flex w-full max-w-sm md:max-w-4xl rounded-lg shadow-lg overflow-hidden">
         <div className="hidden md:flex flex-col justify-center w-1/2 p-12 text-white bg-black/40 backdrop-blur-sm">
           <h1 className="text-4xl font-bold mb-4 font-headline">Welcome to AttendAI</h1>
           <p className="text-lg">

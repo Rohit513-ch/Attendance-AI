@@ -139,7 +139,7 @@ export function RegistrationForm() {
 
 
   return (
-      <Card className="w-[80%] max-w-[800px] mx-auto my-0 p-5 rounded-xl shadow-lg bg-white/10 backdrop-blur-sm border-white/20 text-white">
+      <Card className="w-full max-w-3xl mx-auto my-0 p-5 rounded-xl shadow-lg bg-white/10 backdrop-blur-sm border-white/20 text-white">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold">
             Student Registration Form
@@ -148,7 +148,7 @@ export function RegistrationForm() {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <Label htmlFor="studentName">Student Name <span className="text-red-500">*</span></Label>
                 <Input id="studentName" required className="bg-transparent placeholder:text-gray-400" value={formData.studentName} onChange={handleChange} />
               </div>
@@ -215,7 +215,7 @@ export function RegistrationForm() {
                 <Label htmlFor="studentPhoto">Student Photo <span className="text-red-500">*</span></Label>
                 <Input id="studentPhoto" type="file" required className="bg-transparent" onChange={handleFileChange} />
               </div>
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <Label>Select Branch <span className="text-red-500">*</span></Label>
                 <div className="flex flex-wrap items-center gap-4 mt-2">
                   {['CSE', 'IT', 'ECE', 'Civil', 'EEE', 'Mechanical', 'BT', 'AIML', 'DS'].map(branch => (
@@ -226,7 +226,7 @@ export function RegistrationForm() {
                   ))}
                 </div>
               </div>
-              <div className="col-span-2">
+              <div className="md:col-span-2">
                 <Label htmlFor="address">Address <span className="text-red-500">*</span></Label>
                 <Textarea id="address" required className="bg-transparent placeholder:text-gray-400" value={formData.address} onChange={handleChange} />
               </div>
@@ -239,6 +239,3 @@ export function RegistrationForm() {
       </Card>
   );
 }
-
-
-    

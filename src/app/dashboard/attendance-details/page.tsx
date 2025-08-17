@@ -295,8 +295,8 @@ export default function AttendanceDetailsPage() {
             <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
               <CardHeader>
                 <CardTitle>Attendance Records</CardTitle>
-                <div className="mt-4 flex flex-col gap-4 sm:flex-row">
-                  <div className="relative flex-1">
+                <div className="mt-4 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+                  <div className="relative flex-1 sm:min-w-[200px]">
                     <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                     <Input 
                         placeholder="Search by name, roll no..." 
@@ -311,7 +311,7 @@ export default function AttendanceDetailsPage() {
                         id="date"
                         variant={"outline"}
                         className={cn(
-                          "w-full sm:w-[240px] justify-start text-left font-normal bg-transparent hover:bg-white/20 hover:text-white",
+                          "w-full sm:w-auto justify-start text-left font-normal bg-transparent hover:bg-white/20 hover:text-white",
                           !date && "text-muted-foreground"
                         )}
                       >
@@ -382,7 +382,7 @@ export default function AttendanceDetailsPage() {
                   </DropdownMenu>
                 </div>
               </CardHeader>
-              <CardContent>
+              <CardContent className="overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="hover:bg-white/10 border-white/20">
@@ -406,7 +406,7 @@ export default function AttendanceDetailsPage() {
                                 <AvatarImage src={record.photo} alt={record.name} data-ai-hint="person" />
                                 <AvatarFallback>{record.name.charAt(0)}</AvatarFallback>
                               </Avatar>
-                              <span className="font-medium">{record.name}</span>
+                              <span className="font-medium whitespace-nowrap">{record.name}</span>
                             </div>
                           </TableCell>
                           <TableCell>{record.studentId}</TableCell>
@@ -428,7 +428,7 @@ export default function AttendanceDetailsPage() {
                   </TableBody>
                 </Table>
               </CardContent>
-              <div className="flex items-center justify-between border-t p-4 border-white/20">
+              <div className="flex flex-col sm:flex-row items-center justify-between border-t p-4 border-white/20 gap-4">
                 <p className="text-sm text-gray-300">
                   Showing <strong>{startRecord}-{endRecord}</strong> of <strong>{filteredRecords.length}</strong> records
                 </p>
@@ -474,13 +474,3 @@ export default function AttendanceDetailsPage() {
     </div>
   );
 }
-
-    
-
-    
-
-    
-
-    
-
-    

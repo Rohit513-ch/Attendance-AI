@@ -403,8 +403,8 @@ export default function ViewAuthorizeStudentsPage() {
         </div>
 
         <div className="rounded-lg border bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg">
-          <div className="flex flex-col gap-4 border-b p-4 border-white/20 md:flex-row md:items-center">
-            <div className="relative flex-1">
+          <div className="flex flex-col gap-4 border-b p-4 border-white/20 md:flex-row md:flex-wrap md:items-center">
+            <div className="relative flex-1 md:min-w-[250px]">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search by name, roll no..."
@@ -413,7 +413,7 @@ export default function ViewAuthorizeStudentsPage() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-col sm:flex-row">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="flex-1 md:flex-none bg-transparent hover:bg-white/20 hover:text-white">
@@ -464,86 +464,88 @@ export default function ViewAuthorizeStudentsPage() {
               </DropdownMenu>
             </div>
           </div>
-          <Table>
-            <TableHeader>
-              <TableRow className="hover:bg-white/10 border-b-white/20">
-                <TableHead className="text-white">Student</TableHead>
-                <TableHead className="text-white">Roll No.</TableHead>
-                <TableHead className="text-white">Class</TableHead>
-                <TableHead className="text-white">Department</TableHead>
-                <TableHead className="text-white">Email</TableHead>
-                <TableHead className="text-white">Status</TableHead>
-                <TableHead className="text-right text-white">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {currentStudents.map((student) => (
-                <TableRow key={student.id} className="hover:bg-white/10 border-b-0">
-                  <TableCell>
-                    <div className="flex items-center gap-3">
-                      <Avatar>
-                        <AvatarImage
-                          src={student.photo}
-                          alt={student.name}
-                          data-ai-hint="person"
-                        />
-                        <AvatarFallback>
-                          {student.name.charAt(0)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span className="font-medium">{student.name}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>{student.rollNo}</TableCell>
-                  <TableCell>{student.class}</TableCell>
-                  <TableCell>{student.department}</TableCell>
-                  <TableCell>{student.email}</TableCell>
-                  <TableCell>{getStatusBadge(student.status)}</TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
-                      {student.status === 'Pending' && (
-                        <>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-green-400 hover:text-green-300"
-                            onClick={() => handleAuthorize(student.id)}
-                            title="Authorize with Video"
-                          >
-                            <Video className="h-4 w-4" />
-                            <span className="sr-only">Authorize with video</span>
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8 text-red-400 hover:text-red-300"
-                            onClick={() => handleReject(student.id)}
-                          >
-                            <XCircle className="h-4 w-4" />
-                            <span className="sr-only">Reject</span>
-                          </Button>
-                        </>
-                      )}
-                      <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-gray-300" onClick={() => handleEdit(student)}>
-                        <Pencil className="h-4 w-4" />
-                        <span className="sr-only">Edit</span>
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-red-400 hover:text-red-300"
-                        onClick={() => handleDelete(student.id)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Delete</span>
-                      </Button>
-                    </div>
-                  </TableCell>
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow className="hover:bg-white/10 border-b-white/20">
+                  <TableHead className="text-white">Student</TableHead>
+                  <TableHead className="text-white">Roll No.</TableHead>
+                  <TableHead className="text-white">Class</TableHead>
+                  <TableHead className="text-white">Department</TableHead>
+                  <TableHead className="text-white">Email</TableHead>
+                  <TableHead className="text-white">Status</TableHead>
+                  <TableHead className="text-right text-white">Actions</TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <div className="flex items-center justify-between border-t p-4 border-white/20">
+              </TableHeader>
+              <TableBody>
+                {currentStudents.map((student) => (
+                  <TableRow key={student.id} className="hover:bg-white/10 border-b-0">
+                    <TableCell>
+                      <div className="flex items-center gap-3">
+                        <Avatar>
+                          <AvatarImage
+                            src={student.photo}
+                            alt={student.name}
+                            data-ai-hint="person"
+                          />
+                          <AvatarFallback>
+                            {student.name.charAt(0)}
+                          </AvatarFallback>
+                        </Avatar>
+                        <span className="font-medium whitespace-nowrap">{student.name}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>{student.rollNo}</TableCell>
+                    <TableCell>{student.class}</TableCell>
+                    <TableCell>{student.department}</TableCell>
+                    <TableCell>{student.email}</TableCell>
+                    <TableCell>{getStatusBadge(student.status)}</TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-1 sm:gap-2">
+                        {student.status === 'Pending' && (
+                          <>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-green-400 hover:text-green-300"
+                              onClick={() => handleAuthorize(student.id)}
+                              title="Authorize with Video"
+                            >
+                              <Video className="h-4 w-4" />
+                              <span className="sr-only">Authorize with video</span>
+                            </Button>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="h-8 w-8 text-red-400 hover:text-red-300"
+                              onClick={() => handleReject(student.id)}
+                            >
+                              <XCircle className="h-4 w-4" />
+                              <span className="sr-only">Reject</span>
+                            </Button>
+                          </>
+                        )}
+                        <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-gray-300" onClick={() => handleEdit(student)}>
+                          <Pencil className="h-4 w-4" />
+                          <span className="sr-only">Edit</span>
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 text-red-400 hover:text-red-300"
+                          onClick={() => handleDelete(student.id)}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                          <span className="sr-only">Delete</span>
+                        </Button>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </div>
+          <div className="flex flex-col sm:flex-row items-center justify-between border-t p-4 border-white/20 gap-4">
             <p className="text-sm text-gray-300">
               Showing <strong>{startRecord}-{endRecord}</strong> of{' '}
               <strong>{filteredStudents.length}</strong> students
@@ -572,16 +574,3 @@ export default function ViewAuthorizeStudentsPage() {
       )}
     </div>
   );
-
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
