@@ -36,7 +36,7 @@ export function AttendanceChart({ data }: AttendanceChartProps) {
             try {
                 const dayOfWeek = format(new Date(record.date), 'EEE');
                 if (dailyData[dayOfWeek]) {
-                    if (record.status === 'Present' || record.status === 'Late') {
+                    if (record.status === 'Present') {
                         dailyData[dayOfWeek].present++;
                     } else if (record.status === 'Absent') {
                         dailyData[dayOfWeek].absent++;
