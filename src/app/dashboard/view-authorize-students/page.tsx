@@ -229,7 +229,7 @@ export default function ViewAuthorizeStudentsPage() {
   const [selectedDepartment, setSelectedDepartment] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7;
+  const itemsPerPage = 50;
   
   useEffect(() => {
     setIsClient(true);
@@ -493,4 +493,5 @@ export default function ViewAuthorizeStudentsPage() {
       )}
     </div>
   );
-}
+
+    
