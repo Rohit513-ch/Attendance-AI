@@ -133,7 +133,7 @@ export default function StudentDetailsPage() {
           <div className="md:col-span-2">
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                 <CardHeader>
-                    <CardTitle>Student Directory</CardTitle>
+                    <CardTitle className="text-white">Student Directory</CardTitle>
                 </CardHeader>
                 <CardContent>
                     <Accordion type="single" collapsible className="w-full">
@@ -178,7 +178,7 @@ export default function StudentDetailsPage() {
           <div className="md:col-span-1">
              <Card className="bg-white/10 backdrop-blur-sm border-white/20 sticky top-8">
                 <CardHeader>
-                    <CardTitle>Attendance Information</CardTitle>
+                    <CardTitle className="text-white">Attendance Information</CardTitle>
                     <CardDescription>
                         {date ? `Details for ${format(date, 'MMMM dd, yyyy')}` : 'Select a student and a date'}
                     </CardDescription>
