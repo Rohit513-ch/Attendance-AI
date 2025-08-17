@@ -117,160 +117,20 @@ const initialAttendanceRecords = [
     { date: '2024-05-22', time: '09:01 AM', studentId: 'DS008', name: 'Vivek Jain', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '98%', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '--', studentId: 'DS009', name: 'Neha Agarwal', department: 'DS', class: 'DS-4A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
     { date: '2024-05-22', time: '09:05 AM', studentId: 'DS010', name: 'Harsh Varma', department: 'DS', class: 'DS-4A', status: 'Present', confidence: '96%', photo: 'https://placehold.co/40x40.png' },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME001',
-        name: 'ABHIJIT NARAYAN SETHI',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME003',
-        name: 'MUKUND DAGA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME004',
-        name: 'DEBASISH NAYAK',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME005',
-        name: 'RASMI RANJAN SAHOO',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME006',
-        name: 'AMARENDRA BEHERA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME007',
-        name: 'KSHITISH KUMAR PODH',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME008',
-        name: 'SUBHRARANJAN MISHRA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME010',
-        name: 'ANKEET MAHARANA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME012',
-        name: 'SINAYARAJ NAIK',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME013',
-        name: 'RAKESH ROSHAN KHORA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME014',
-        name: 'PARESH KUMAR BISOI',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME015',
-        name: 'PINMAYA BEHERA',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME016',
-        name: 'SAIKIRAN PRADHAN',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
-    {
-        date: '2024-05-22',
-        time: '--',
-        studentId: '23ME017',
-        name: 'NARESH KUMAR KHILLO',
-        department: 'Mechanical',
-        class: 'MECH-A',
-        status: 'Absent',
-        confidence: '--',
-        photo: 'https://placehold.co/40x40.png'
-    },
+    { date: '2024-05-22', time: '--', studentId: '23ME001', name: 'ABHIJIT NARAYAN SETHI', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME003', name: 'MUKUND DAGA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME004', name: 'DEBASISH NAYAK', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME005', name: 'RASMI RANJAN SAHOO', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME006', name: 'AMARENDRA BEHERA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME007', name: 'KSHITISH KUMAR PODH', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME008', name: 'SUBHRARANJAN MISHRA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME010', name: 'ANKEET MAHARANA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME012', name: 'SINAYARAJ NAIK', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME013', name: 'RAKESH ROSHAN KHORA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME014', name: 'PARESH KUMAR BISOI', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME015', name: 'PINMAYA BEHERA', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME016', name: 'SAIKIRAN PRADHAN', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
+    { date: '2024-05-22', time: '--', studentId: '23ME017', name: 'NARESH KUMAR KHILLO', department: 'Mechanical', class: 'MECH-A', status: 'Absent', confidence: '--', photo: 'https://placehold.co/40x40.png' },
 ];
 
 export type AttendanceRecord = typeof initialAttendanceRecords[0];
@@ -614,6 +474,8 @@ export default function AttendanceDetailsPage() {
     </div>
   );
 }
+
+    
 
     
 
