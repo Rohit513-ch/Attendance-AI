@@ -139,12 +139,12 @@ export default function StudentDetailsPage() {
                     <Accordion type="single" collapsible className="w-full">
                     {Object.entries(groupedStudents).sort(([depA], [depB]) => depA.localeCompare(depB)).map(([department, classes]) => (
                         <AccordionItem value={department} key={department}>
-                        <AccordionTrigger className="text-lg font-semibold">{department}</AccordionTrigger>
+                        <AccordionTrigger className="text-lg font-semibold text-white">{department}</AccordionTrigger>
                         <AccordionContent>
                             <Accordion type="single" collapsible className="w-full pl-4">
                             {Object.entries(classes).sort(([classA], [classB]) => classA.localeCompare(classB)).map(([className, studentList]) => (
                                 <AccordionItem value={className} key={className}>
-                                <AccordionTrigger>{className}</AccordionTrigger>
+                                <AccordionTrigger className="text-white">{className}</AccordionTrigger>
                                 <AccordionContent className="space-y-2 pl-4">
                                     {studentList.map(student => (
                                     <div key={student.id} 
