@@ -6,7 +6,6 @@ import { Menu, Camera } from 'lucide-react';
 export function Header() {
   const navItems = [
     { label: 'Features', href: '#features' },
-    { label: 'Team', href: '#team' },
   ];
 
   return (
