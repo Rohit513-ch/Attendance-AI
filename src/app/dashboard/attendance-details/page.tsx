@@ -600,7 +600,7 @@ export default function AttendanceDetailsPage() {
                           <TableCell>{record.class}</TableCell>
                           <TableCell>{format(new Date(record.date), 'dd MMM, yyyy')}</TableCell>
                           <TableCell>{record.time}</TableCell>
-                          <TableCell>{getStatusBadge(record.status)}</TableCell>
+                          <TableCell>{getStatusBadge(record.status) ?? getStatusBadge('Absent')}</TableCell>
                           <TableCell>{record.confidence}</TableCell>
                         </TableRow>
                       ))
