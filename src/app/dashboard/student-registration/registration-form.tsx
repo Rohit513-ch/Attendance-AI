@@ -22,6 +22,7 @@ import {
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Textarea } from '@/components/ui/textarea';
+import Link from 'next/link';
 
 export function RegistrationForm() {
   return (
@@ -142,8 +143,8 @@ export function RegistrationForm() {
           </form>
         </CardContent>
         <CardFooter className="px-0 pb-0">
-          <Button className="w-full text-lg py-6 rounded-t-none">
-            Submit
+          <Button className="w-full text-lg py-6 rounded-t-none" asChild>
+            <Link href="/dashboard/student-registration/success">Submit</Link>
           </Button>
         </CardFooter>
       </Card>
