@@ -218,7 +218,7 @@ export function RegistrationForm() {
               <div className="col-span-2">
                 <Label>Select Branch <span className="text-red-500">*</span></Label>
                 <div className="flex flex-wrap items-center gap-4 mt-2">
-                  {['CSE', 'IT', 'ECE', 'Civil', 'EEE', 'Mech', 'BT'].map(branch => (
+                  {['CSE', 'IT', 'ECE', 'Civil', 'EEE', 'Mechanical', 'BT', 'AIML', 'DS'].map(branch => (
                      <div className="flex items-center space-x-2" key={branch}>
                         <Checkbox id={branch} onCheckedChange={(checked) => handleCheckboxChange(branch, checked)} checked={formData.branch === branch} />
                         <Label htmlFor={branch}>{branch}</Label>
@@ -239,3 +239,6 @@ export function RegistrationForm() {
       </Card>
   );
 }
+
+
+    
