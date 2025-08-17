@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import {
+  LayoutDashboard,
   UserPlus,
   Users,
   Camera,
@@ -27,6 +28,7 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const navItems = [
+    { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { href: '/dashboard/student-registration', icon: UserPlus, label: 'Student Registration' },
     { href: '/dashboard/view-authorize-students', icon: Users, label: 'View / Authorize Students' },
     { href: '/dashboard/mark-attendance', icon: Camera, label: 'Mark Attendance' },
