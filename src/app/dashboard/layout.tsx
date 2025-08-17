@@ -18,6 +18,7 @@ import {
   ListChecks,
   LogOut,
   Menu,
+  BookUser,
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -31,6 +32,7 @@ export default function DashboardLayout({
     { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { href: '/dashboard/student-registration', icon: UserPlus, label: 'Student Registration' },
     { href: '/dashboard/view-authorize-students', icon: Users, label: 'View / Authorize Students' },
+    { href: '/dashboard/student-details', icon: BookUser, label: 'Student Details' },
     { href: '/dashboard/mark-attendance', icon: Camera, label: 'Mark Attendance' },
     { href: '/dashboard/attendance-details', icon: ListChecks, label: 'Attendance Details' },
   ];
