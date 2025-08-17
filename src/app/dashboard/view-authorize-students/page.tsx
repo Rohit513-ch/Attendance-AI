@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Table,
   TableBody,
@@ -28,6 +29,7 @@ import {
   Pencil,
   Trash2,
   Clock,
+  Video,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -219,6 +221,7 @@ const getStatusBadge = (status: string) => {
 };
 
 export default function ViewAuthorizeStudentsPage() {
+  const router = useRouter();
   const [isClient, setIsClient] = useState(false);
   const [students, setStudents] = useState<Student[]>([]);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
@@ -252,8 +255,12 @@ export default function ViewAuthorizeStudentsPage() {
       }
   }
 
-  const handleStatusChange = (id: string, status: 'Authorized' | 'Rejected') => {
-    const updatedStudents = students.map(student => student.id === id ? { ...student, status } : student)
+  const handleAuthorize = (id: string) => {
+      router.push(`/dashboard/authorize-video/${id}`);
+  };
+
+  const handleReject = (id: string) => {
+    const updatedStudents = students.map(student => student.id === id ? { ...student, status: 'Rejected' } : student);
     setStudents(updatedStudents);
     updateLocalStorage(updatedStudents);
   };
@@ -421,16 +428,16 @@ export default function ViewAuthorizeStudentsPage() {
                             variant="ghost"
                             size="icon"
                             className="h-8 w-8 text-green-400 hover:text-green-300"
-                            onClick={() => handleStatusChange(student.id, 'Authorized')}
+                            onClick={() => handleAuthorize(student.id)}
                           >
-                            <CheckCircle className="h-4 w-4" />
-                            <span className="sr-only">Authorize</span>
+                            <Video className="h-4 w-4" />
+                            <span className="sr-only">Authorize with Video</span>
                           </Button>
                           <Button
                             variant="ghost"
                             size="icon"
                             className="h-8 w-8 text-red-400 hover:text-red-300"
-                            onClick={() => handleStatusChange(student.id, 'Rejected')}
+                            onClick={() => handleReject(student.id)}
                           >
                             <XCircle className="h-4 w-4" />
                             <span className="sr-only">Reject</span>
