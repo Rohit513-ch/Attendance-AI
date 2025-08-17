@@ -29,6 +29,7 @@ import {
   Pencil,
   Trash2,
   Clock,
+  Video,
 } from 'lucide-react';
 import {
   AlertDialog,
@@ -255,9 +256,7 @@ export default function ViewAuthorizeStudentsPage() {
   }
 
   const handleAuthorize = (id: string) => {
-    const updatedStudents = students.map(student => student.id === id ? { ...student, status: 'Authorized' } : student);
-    setStudents(updatedStudents);
-    updateLocalStorage(updatedStudents);
+    router.push(`/dashboard/authorize-video/${id}`);
   };
 
   const handleReject = (id: string) => {
@@ -430,9 +429,10 @@ export default function ViewAuthorizeStudentsPage() {
                             size="icon"
                             className="h-8 w-8 text-green-400 hover:text-green-300"
                             onClick={() => handleAuthorize(student.id)}
+                            title="Authorize with Video"
                           >
-                            <CheckCircle className="h-4 w-4" />
-                            <span className="sr-only">Authorize</span>
+                            <Video className="h-4 w-4" />
+                            <span className="sr-only">Authorize with video</span>
                           </Button>
                           <Button
                             variant="ghost"

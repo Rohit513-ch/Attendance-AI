@@ -15,6 +15,7 @@ export interface Student {
   department: string;
   email: string;
   status: string;
+  videoUrl?: string;
 }
 
 interface EditStudentFormProps {
